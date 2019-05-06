@@ -18,7 +18,7 @@ Knowing the basics of how they work, and how to use them (with SQL) will allow s
 By the end of this lesson, students should be able to: 
 
 - Explain what Relational Databases are used for.
-- Explain how data is organized in tables.   
+- Explain how data is organized in relational databases.   
 - Describe the relationship between tables, rows and columns.
 - Understand the basics of [database normalization](https://en.wikipedia.org/wiki/Database_normalization).
 
@@ -67,7 +67,7 @@ Also notice that model names seem to be unique for each vendor. If you were addi
 
 Finally, notice how you'd want to sum up the "Quantity in Stock" to find out how many tires you have in your inventory, but you would never want to sum up aspect ratios; that just doesn't make sense.  
 
-The process of de-duplicating data when you design a relational database is called "normalization". Going the other way is called "denormalization" or "flattening"your data.
+The process of de-duplicating data when you design a relational database is called "normalization". Going the other way is called "denormalization" or "flattening" your data.
 
 ### Let's work on an example together (50 minutes):
 
