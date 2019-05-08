@@ -33,12 +33,6 @@
    createuser -P -s postgres
    ```   
    
-1. Create your database
-
-   ```
-    createdb `whoami`
-   ```
-
 1. Test you connection to the server
     ```
     $ psql
