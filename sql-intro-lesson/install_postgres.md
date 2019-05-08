@@ -47,7 +47,7 @@
     
     alex=# 
     ```
-    Note: The installation process has created a superuser using your Mac username. When any user attempts to log in, it will not ask for a password. If you want to change that (and you probably should), see [more about the pg_hba.conf file](https://www.postgresql.org/docs/9.1/auth-pg-hba-conf.html)). You can copy [this config file](pg_hba.conf) to ``/usr/local/var/postgres/pg_hba.conf ``
+    Note: In addition to the ``postgres`` superuser created above, the installation process has created a superuser using your Mac username. When any user attempts to log in, it will not ask for a password. If you want to change that (and you probably should), see [more about the pg_hba.conf file](https://www.postgresql.org/docs/9.1/auth-pg-hba-conf.html)). You can copy [this config file](pg_hba.conf) to ``/usr/local/var/postgres/pg_hba.conf ``
     
 1. Terminate your session
     ```
