@@ -27,7 +27,7 @@
    pg_ctl -D /usr/local/var/postgres start
    ```
 
-1. Create a ``postgres`` superuser. (See [here](https://www.postgresql.org/docs/devel/app-createuser.html)). It will prompt you to enter a password for the new user twice.
+1. Create a ``postgres`` superuser. It will prompt you to enter a password for the new user twice. (See [here](https://www.postgresql.org/docs/devel/app-createuser.html)) for more information.
 
    ```
    createuser -P -s postgres
@@ -47,7 +47,7 @@
     
     alex=# 
     ```
-    Note: The installation process has created a postgres superuser using your Mac username. When you login, it will not ask you for a username and password. If you want to change that, see [more about the pg_hba.conf file](https://www.postgresql.org/docs/9.1/auth-pg-hba-conf.html)) and you can copy [this config file](pg_hba.conf) to ``/usr/local/var/postgres/pg_hba.conf ``
+    Note: The installation process has created a superuser using your Mac username. When any user attempts to log in, it will not ask for a password. If you want to change that (and you probably should), see [more about the pg_hba.conf file](https://www.postgresql.org/docs/9.1/auth-pg-hba-conf.html)). You can copy [this config file](pg_hba.conf) to ``/usr/local/var/postgres/pg_hba.conf ``
     
 1. Terminate your session
     ```
