@@ -80,7 +80,15 @@ However, it's more common to allow MongoDB to create it implicitly for us using 
 
 #### MongoDB vs. Relational SQL Databases, Terminology
 
-![](http://4.bp.blogspot.com/-edz2_QrFvCE/UnzBhKZE3FI/AAAAAAAAAEs/bTEsqnZFTXw/s1600/SQL-MongoDB+Correspondence.PNG)
+Wondering what makes noSQL different from SQL? Here's a great analogy from StackOverflow:
+
+> "NoSQL databases store information like you would recipes in a book. When you want to know how to make a cake, you go to that recipe, and all of the information about how to make that cake (ingredients, preparation, mixing, baking, finishing, etc.) are all on that one page.
+>
+> SQL is like shopping for the ingredients for the recipe. In order to get all of your ingredients into your cart, you have to go to many different aisles to get each ingredient. When you are done shopping, your grocery cart will be full of all the ingredients you had to run around and collect.
+>
+> Wouldn’t it be nicer if there was a store that was organized by recipe, so you could go to one place in the store and grab everything you need from that one spot? Granted you’ll find ingredients like eggs in 50 different places, so there’s a bit of overhead when stocking the shelves, but from a consumer standpoint it would be much easier/faster to find what they're looking for."
+
+-<a href="http://stackoverflow.com/questions/14428069/sql-and-nosql-analogy-for-the-non-technical/14428221#14428221" target="_blank">mgoffin, Jan 20 '13 at 19:15</a>
 
 #### Key Differences of MongoDB
 
@@ -93,6 +101,12 @@ In a SQL DB, we break up related data into separate tables.
 In MongoDB, we often _embed_ related data in a single document, you'll see an example of this later.
 
 The supporters of MongoDB highlight the lack of table joins as a performance advantage since joins are expensive in terms of computer processing.
+
+#### Difference in Terminology
+
+![](http://4.bp.blogspot.com/-edz2_QrFvCE/UnzBhKZE3FI/AAAAAAAAAEs/bTEsqnZFTXw/s1600/SQL-MongoDB+Correspondence.PNG)
+
+
 
 ## Installing, Creating a DB, and Inserting Documents - Codealong (15 mins)
 
