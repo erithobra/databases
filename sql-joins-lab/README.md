@@ -40,6 +40,8 @@ Your app doesn't need to look like the screenshot, but it needs to have the same
 
 #### Requirements
 
+TODO: Turn this into a vanilla Java lab
+
 The Main Activity should:  
 
 - Populate the database when launched
