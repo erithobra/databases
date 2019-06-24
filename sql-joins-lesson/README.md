@@ -19,8 +19,8 @@ creator:
 
 ### STUDENT PRE-WORK
 *Before this lesson, you should already be able to:*
-- Create tables in SQLite
-- Use databases in Android apps
+- Create tables in PostgreSQL
+- Use databases in back-end Java apps
 - Identify the reasons to use multiple tables
 
 ### LESSON GUIDE
@@ -28,10 +28,10 @@ creator:
 | TIMING  | TYPE  | TOPIC  |
 |:-:|---|---|
 | 5 min  | [Opening](#opening-5-mins)  | Discuss lesson objectives |
-| 20 min  | [Introduction](#introduction-review-primaryforeign-key-and-sqlite-joins-20-mins)  | Review Primary/Foreign Key and SQLite Joins |
+| 20 min  | [Introduction](#introduction-review-primaryforeign-key-and-sqlite-joins-20-mins)  | Review Primary/Foreign Key and PostgreSQL Joins |
 | 15 min  | [Demo](#demo-inner-joins-15-mins)  | Inner Joins |
-| 20 min  | [Guided Practice](#guided-practice-inner-joins-in-android-20-mins)  | Inner Joins in Android |
-| 25 min  | [Independent Practice](#independent-practice-inner-joins-in-android-25-mins)  | Inner Joins in Android |
+| 20 min  | [Guided Practice](#guided-practice-inner-joins-in-android-20-mins)  | Inner Joins in Java |
+| 25 min  | [Independent Practice](#independent-practice-inner-joins-in-android-25-mins)  | Inner Joins in Java |
 | 5 min  | [Conclusion](#conclusion-5-mins)  | Review / Recap |
 
 ## Opening (5 mins)
@@ -41,7 +41,7 @@ A hefty part of designing a relational database is dividing the data elements in
 Once you're ready to start working with the data, you rely on relationships between the tables - in practice, this is done with JOINS.
 
 
-## Introduction: Review Primary/Foreign Key and SQLite Joins (20 mins)
+## Introduction: Review Primary/Foreign Key and PostgreSQL Joins (20 mins)
 
 SQL joins are a way to combine records from two or more tables in a database.
 A JOIN is a means for combining fields from two tables by using values common to each.
@@ -140,7 +140,11 @@ As we can see from the query, we compare the tables based on one column in each 
 
 The returned data includes information about EMP_ID, NAME and DEPT.
 
-## Guided Practice: Inner Joins in Android (20 mins)
+## Guided Practice: Inner Joins in Java (20 mins)
+
+
+TODO: Need to do this in vanilla Java
+
 
 Import the project [starter-code](relationships-between-tables-lesson/starter-code). Discuss with the instructor the way both table are created (methods: `getInstance(Context context)`, `onCreate(SQLiteDatabase db)`, `insertRow(Employee employee)`,`insertRowDepartment(Department department)`) in the class Helper.
 
@@ -211,7 +215,9 @@ As mentioned above we compare two tables on the following columns:
 
 In our examples we can see that the second entry in the table EMPLOYEE is associated with the name "Harry", the table has an "_ID" column that gets autoincremented every time we add a new entry. In the DEPARTMENT table the second row has EMP_ID equal 2. The same happens with the employee id of 7. Thus, we get the names "Sarah" and "Harry" returned in the method ```getNameJoins()```.
 
-## Independent Practice: Inner Joins in Android (25 mins)
+## Independent Practice: Inner Joins in Java (25 mins)
+
+TODO: Need to do this in vanilla Java
 
 Using the app above, create another method ```getFullInformation()``` that will return not only the name of the person but will provide the information about the employee's age, address, salary and department. Change the query statement, the result string, which is supposed to return full information about the employee, in the Helper class and uncomment a line of code in Main Activity class to test the app.
 
