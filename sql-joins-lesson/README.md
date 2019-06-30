@@ -3,7 +3,7 @@ title: JOINS
 type: Lesson
 duration: "1:30"
 creator:
-    name: Yuliya Kaleda
+    name: Yuliya Kaleda (and Alex De Marco)
     city: NYC
 ---
 
