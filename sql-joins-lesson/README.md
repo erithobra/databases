@@ -161,11 +161,15 @@ In our examples we can see that the second entry in the table EMPLOYEES is assoc
 
 ## Independent Practice: Inner Joins in Java (25 mins)
 
-Using the app above, create a query that will return not only the name of the person but will provide the information about the employee's age, address, salary and department for employees making more than $30,000.
+Using the app above, create a query that will return not only the name of the person but will provide the information about the employee's age, address, salary and department (whether or not they have been assigned a department) for employees making more than $15,000.
 
 ```sql
 SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expression ...
 ```
+
+The query result should look like this:
+
+![](screenshots/results.png )
 
 > Check: With 4 minutes left, review the solution with students.
 
