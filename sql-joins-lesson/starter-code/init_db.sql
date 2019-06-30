@@ -18,7 +18,7 @@ CREATE TABLE employees (
 
 CREATE TABLE departments (
     id SERIAL PRIMARY KEY NOT NULL,
-    dept_name VARCHAR(255),
+    dept VARCHAR(255),
     emp_id SERIAL NOT NULL,
     FOREIGN KEY (emp_id) REFERENCES employees(id)
 );

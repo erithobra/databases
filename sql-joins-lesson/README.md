@@ -103,9 +103,9 @@ SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expressio
 > Check: What do you think common columns to compare between two tables would be?
 
 ## Demo: Inner Joins (15 mins)
-Let's consider two tables EMPLOYEE and DEPARTMENT:   
+Let's consider two tables EMPLOYEES and DEPARTMENTS:   
 
-EMPLOYEE:
+EMPLOYEES:
 
 <p align="center">
   <img src="screenshots/company.png"/>   
@@ -113,7 +113,7 @@ EMPLOYEE:
 
 The table has 5 columns: ID, NAME, AGE, ADDRESS, SALARY.  
 
-DEPARTMENT    
+DEPARTMENTS:    
 
 <p align="center">
   <img src="screenshots/department.png"/>   
@@ -124,7 +124,7 @@ The table has 3 columns: ID, DEPT, EMP_ID.
 Based on the above tables, we can write an INNER JOIN as follows:  
 
 ```SQL
-SELECT EMP_ID, NAME, DEPT FROM EMPLOYEE INNER JOIN DEPARTMENT ON EMPLOYEE.ID = DEPARTMENT.EMP_ID
+SELECT EMP_ID, NAME, DEPT FROM EMPLOYEES INNER JOIN DEPARTMENTS ON EMPLOYEES.ID = DEPARTMENTS.EMP_ID
 ```
 > Check: Take a minute and predict the results of the query with the person next to you.
 
@@ -142,70 +142,14 @@ The returned data includes information about EMP_ID, NAME and DEPT.
 
 ## Guided Practice: Inner Joins in Java (20 mins)
 
-
-TODO: Need to do this in vanilla Java
-
-
-Import the project [starter-code](relationships-between-tables-lesson/starter-code). Discuss with the instructor the way both table are created (methods: `getInstance(Context context)`, `onCreate(SQLiteDatabase db)`, `insertRow(Employee employee)`,`insertRowDepartment(Department department)`) in the class Helper.
-
-In Android, using just SQL queries is not enough to get information from the database. As you might remember from your database lesson, you call `getWritableDatabase()` to get a SQLiteDatabase object, on which you call  `rawQuery() ` passing the query string. As a result you get a cursor object that returns entries:  
+Import the project [starter-code](starter-code). Use commands in [commands.md](commands.md) to create a database called company, create the database tables, and then insert data. 
 
 If we were writing plain SQL, our query asks for the name of the person would look like this:
 
 ```sql
-SELECT NAME FROM EMPLOYEE INNER JOIN DEPARTMENT ON EMPLOYEE._ID = DEPARTMENT.EMP_ID;
+SELECT NAME FROM EMPLOYEES INNER JOIN DEPARTMENTS ON EMPLOYEES.ID = DEPARTMENTS.EMP_ID;
 ```
 
-In Android, we need to use the `SQLiteQueryBuilder` class to accomplish a JOIN:
-
-```java
-public List<String> getNameJoins() {
-    SQLiteDatabase db = getReadableDatabase();
-
-    // Use the query builder to specify your join
-    SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-    builder.setTables(EMPLOYEE_TABLE_NAME + " JOIN " + DEPARTMENT_TABLE_NAME +
-                " ON " + EMPLOYEE_TABLE_NAME + "." + COL_ID +
-                " = " + DEPARTMENT_TABLE_NAME + "." + COL_EMP_ID);
-
-    Cursor cursor = builder.query(db, new String[]{COL_NAME}, null, null, null, null, null);
-
-    List<String> list = new ArrayList<>();
-
-    if (cursor.moveToFirst()) {
-        while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(cursor.getColumnIndex(COL_NAME)));
-            cursor.moveToNext();
-        }
-    }
-
-    cursor.close();
-    return list;
-}
-```  
-
-Pay attention that after a cursor object is used, you should close it.   
-Copy the above code and insert it in the method ```getNameJoins()``` in Helper java class.
-
-
-In the Main Activity class we added 3 employees and 2 departments:  
-
-```java
-Employee employee = new Employee("John", 32, "NY", 30);
-Employee employee1 = new Employee("Harry", 31, "VA", 60);
-Employee employee2 = new Employee("Mike", 30, "NY", 100);
-Employee employee3 = new Employee("Stan", 40, "NY", 70);
-Employee employee4 = new Employee("Sally", 31, "VA", 60);
-Employee employee5 = new Employee("Tony", 25, "NY", 90);
-Employee employee6 = new Employee("Sarah", 45, "NY", 100);
-
-```  
-
-```java
-Department department = new Department("IT Building", 7);
-Department department1 = new Department("Engineering", 2);
-
-```  
 As mentioned above we compare two tables on the following columns:
 
 * ID in the COMPANY table
@@ -213,47 +157,15 @@ As mentioned above we compare two tables on the following columns:
 
 > Take 2 minutes to figure out what should the query return.
 
-In our examples we can see that the second entry in the table EMPLOYEE is associated with the name "Harry", the table has an "_ID" column that gets autoincremented every time we add a new entry. In the DEPARTMENT table the second row has EMP_ID equal 2. The same happens with the employee id of 7. Thus, we get the names "Sarah" and "Harry" returned in the method ```getNameJoins()```.
+In our examples we can see that the second entry in the table EMPLOYEES is associated with the name "Allen", the table has an "ID" column that gets autoincremented every time we add a new entry. In the DEPARTMENT table the second row has EMP_ID equal 2. The same happens with the employee id of 7. Thus, we get the names "Paul", "Allen", and "James" returned.
 
 ## Independent Practice: Inner Joins in Java (25 mins)
 
-TODO: Need to do this in vanilla Java
+Using the app above, create a query that will return not only the name of the person but will provide the information about the employee's age, address, salary and department for employees making more than $30,000.
 
-Using the app above, create another method ```getFullInformation()``` that will return not only the name of the person but will provide the information about the employee's age, address, salary and department. Change the query statement, the result string, which is supposed to return full information about the employee, in the Helper class and uncomment a line of code in Main Activity class to test the app.
-
-> Instructor Notes: the method ```getFullInformation()``` should look like this:
-
-```java
-public List<String> getFullInformation() {
-    SQLiteDatabase db = getReadableDatabase();
-
-    // Use the query builder to specify your join
-    SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-    builder.setTables(EMPLOYEE_TABLE_NAME + " JOIN " + DEPARTMENT_TABLE_NAME +
-            " ON " + EMPLOYEE_TABLE_NAME + "." + COL_ID +
-            " = " + DEPARTMENT_TABLE_NAME + "." + COL_EMP_ID);
-
-    Cursor cursor = builder.query(db,
-            new String[]{COL_NAME, COL_ADDRESS, COL_AGE, COL_SALARY, COL_DEPARTMENT},
-            null, null, null, null, null);
-
-    List<String> mInfoList = new ArrayList<>();
-
-    if (cursor.moveToFirst()) {
-        while (!cursor.isAfterLast()) {
-            mInfoList.add(cursor.getString(cursor.getColumnIndex(COL_NAME)) +
-                        ", who is " + cursor.getString(cursor.getColumnIndex(COL_AGE)) +
-                        " years old, lives in " + cursor.getString(cursor.getColumnIndex(COL_ADDRESS)) +
-                        ", earns $" + cursor.getString(cursor.getColumnIndex(COL_SALARY)) +
-                        " working in the " + cursor.getString(cursor.getColumnIndex(COL_DEPARTMENT)) + " department.");
-                cursor.moveToNext();
-        }
-    }
-
-    cursor.close();
-    return mInfoList;
-}
-```  
+```sql
+SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expression ...
+```
 
 > Check: With 4 minutes left, review the solution with students.
 
