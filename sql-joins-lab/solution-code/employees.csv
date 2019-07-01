@@ -1,4 +1,4 @@
-ssn,first_name,last_name,year_of_birth,city
+ssn,first,last,year_of_birth,city
 "123-04-5678","John","Smith",1973,"NY"
 "123-04-5679","David","McWill",1982,"Seattle"
 "123-04-5680","Katerina","Wise",1973,"Boston"

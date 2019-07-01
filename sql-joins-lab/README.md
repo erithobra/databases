@@ -38,12 +38,12 @@ The main purpose of our scripts is to query information from both tables:
 
 ### Requirements
 
-The ``init_db.sql`` script should:  
+An ``init_db.sh`` script should:  
   1. Create the database 
   1. Create the tables
   1. Populate the tables
 
-The ``queries.sql`` script should run three queries, one for each of the following:
+A ``run_queries.sh`` script should run three queries, one for each of the following:
   1. **Employees working at macys** - the full names of employees working at Macys
   1. **Companies in Boston** - the companies located in Boston
   1. **Employee with the highest salary** - the employee name with the highest salary
