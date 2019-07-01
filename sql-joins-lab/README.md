@@ -13,7 +13,7 @@ creator:
 
 > ***Note:*** _This should be done independently._
 
-In this lab, you will create SQL scripts for Postgres that will create and initialize a database with two tables - Employee and Job, and then query the data in those tables. You can build on the [starter code](../sql-joins-lesson/starter-code) that we worked on in the lesson.
+In this lab, you will create SQL scripts for Postgres that will create and initialize a database with two tables - Employee and Job, and then query the data in those tables. 
 
 Employee table has the following data:  
 
@@ -39,17 +39,11 @@ The main purpose of our scripts is to query information from both tables:
 ### Requirements
 
 The ``init_db.sql`` script should:  
+  1. Create the database 
+  1. Create the tables
+  1. Populate the tables
 
-- Create the database 
-
-- Create the tables
-
-- Populate the tables
-
-The ``queries.sql`` script should:
-  
-- Run three queries, one for each of the following:
-
+The ``queries.sql`` script should run three queries, one for each of the following:
   1. **Employees working at macys** - the full names of employees working at Macys
   1. **Companies in Boston** - the companies located in Boston
   1. **Employee with the highest salary** - the employee name with the highest salary
@@ -58,12 +52,8 @@ The ``queries.sql`` script should:
 
 ### Starter Code
 
-The [starter code](../sql-joins-lesson/starter-code) TODO
+Refer to [this lab's starter code](./starter-code) and as well as the [sql-join-lesson starter code](../sql-joins-lesson/starter-code) to build your solution.
 
 ### Deliverable
 
 A pull request with all your code for a working app that meets the requirements above.
-
-## ADDITIONAL RESOURCES
-
-- 
