@@ -50,10 +50,9 @@ The ``queries.sql`` script should:
   
 - Run three queries, one for each of the following:
 
-  -**Employees working at macys** - the button that will return the full names of employees working at Macys
-  -**Companies in Boston** - the button that will return companies located in Boston
-  -**Employee with the highest salary** - the button that will return the employee name with the highest salary
-
+  1. **Employees working at macys** - the full names of employees working at Macys
+  1. **Companies in Boston** - the companies located in Boston
+  1. **Employee with the highest salary** - the employee name with the highest salary
 
 *Note: Those two files can call other files if you wish.*
 
