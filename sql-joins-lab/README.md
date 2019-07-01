@@ -59,7 +59,7 @@ The ``queries.sql`` script should:
 
 ### Starter Code
 
-The [starter code](starter-code) TODO
+The [starter code](../sql-joins-lesson/starter-code) TODO
 
 ### Deliverable
 
