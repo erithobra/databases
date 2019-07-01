@@ -3,7 +3,7 @@ title: SQL Joins
 type: Lab
 duration: "1:30"
 creator:
-    name: Yuliya Kaleda
+    name: Yuliya Kaleda (and Alex De Marco)
     city: NYC
 ---
 
@@ -13,7 +13,7 @@ creator:
 
 > ***Note:*** _This should be done independently._
 
-In this lab, you will create an app with a database with two tables - Employee and Job.  
+In this lab, you will create SQL scripts for Postgres that will create and initialize a database with two tables - Employee and Job, and then query the data in those tables. You can build on the [starter code](../sql-joins-lesson/starter-code) that we worked on in the lesson.
 
 Employee table has the following data:  
 
@@ -27,45 +27,44 @@ Job table looks like this:
   <img src="./screenshots/job.png">   
 </p>
 
-The main purpose of the app is to provide information, which is pulled from both tables:  
+The main purpose of our scripts is to query information from both tables:  
 
 1.  Show the full name of employees working at Macys
 2.  Show the companies located in Boston  
 3.  Show the full name of the employee with the highest salary  
 
-Your app doesn't need to look like the screenshot, but it needs to have the same functionality.
-
 
 ## Exercise
 
-#### Requirements
+### Requirements
 
-TODO: Turn this into a vanilla Java lab
+The ``init_db.sql`` script should:  
 
-The Main Activity should:  
+- Create the database 
 
-- Populate the database when launched
-  - Complete the `addEmployee()` and `addJob()` methods in the `Helper` class
+- Create the tables
+
+- Populate the tables
+
+The ``queries.sql`` script should:
   
-- Contain 3 buttons that display their results in a `RecyclerView`:
+- Run three queries, one for each of the following:
+
   -**Employees working at macys** - the button that will return the full names of employees working at Macys
   -**Companies in Boston** - the button that will return companies located in Boston
   -**Employee with the highest salary** - the button that will return the employee name with the highest salary
 
-#### Starter Code
 
-The [starter code](starter-code) project contains code in `MainActivity` to add records to the database, so you don't have to type them all out.
-However, the `addEmployee()` and `addJob()` methods in the `Helper` must still be completed.
+*Note: Those two files can call other files if you wish.*
 
-The project also contains several `TODO` comments guiding you on where to add code to complete the requirements listed above.
+### Starter Code
 
-#### Deliverable
+The [starter code](starter-code) TODO
+
+### Deliverable
 
 A pull request with all your code for a working app that meets the requirements above.
 
-You can get creative with the formatting if you like, but the basic functionality should be this:
-<img src="./screenshots/deliverable.gif" width="300"/>
-
 ## ADDITIONAL RESOURCES
 
-- [SQLiteQueryBuilder documentation](https://developer.android.com/reference/android/database/sqlite/SQLiteQueryBuilder.html)
+- 
