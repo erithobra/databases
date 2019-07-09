@@ -5,7 +5,7 @@ duration: "1:25"
 creator: Melissa Arliss, pulled from ed-prob-lib
 ---
 
-# # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL Basics
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL Basics
 
 ## Introduction
 
