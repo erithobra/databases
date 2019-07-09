@@ -1,33 +1,24 @@
 ---
-title: SQL Setup, Insert, Update, and Delete
+title: Intro to SQL
 type: lesson
 duration: "1:25"
 creator:
     name: Jay Nappy
     city: NYC
-competencies: Databases
 ---
 
-# SQL Setup, Insert, Update and Delete
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Intro to SQL
 
 ### Objectives
+
 *After this lesson, students will be able to:*
 
 - Create a database table
 - Insert, retrieve, update, and delete a row or rows into a database table
 
-### Preparation
-*Before this lesson, students should already be able to:*
-
-- Install **[PostgreSQL](http://www.postgresql.org/)**
-- Describe the relationship between tables, rows, and columns
-- Draw an ERD diagram
-- Explain the difference between table relationships
-
-
 ## We know about Databases, but what is SQL? Intro (10 mins)
 
-Let's review: at it's simplest, a relational database is a mechanism to store and retrieve data in a tabular form.  Spreadsheets are a good analogy!  But how do we interact with our database: inserting data, updating data, retrieving data, and deleting data? That's where SQL comes in!
+Let's review: at its simplest, a relational database is a mechanism to store and retrieve data in a tabular form.  Spreadsheets are a good analogy!  But how do we interact with our database: inserting data, updating data, retrieving data, and deleting data? That's where SQL comes in!
 
 #### What is SQL?
 
