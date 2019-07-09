@@ -1,11 +1,11 @@
 ---
-title: SQL Select
+title: SQL Basics
 type: lab
 duration: "1:25"
 creator: Melissa Arliss, pulled from ed-prob-lib
 ---
 
-# Use SQL to find Carmen Sandiego
+# # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL Basics
 
 ## Introduction
 
@@ -77,12 +77,7 @@ Again, be sure to grab the .sql file from the [starter-code](starter-code/world.
 
 #### Deliverable
 
-Use the clues.sql file to write in the SQL queries that correspond with each clue and tell us where she's heading at the bottom:
-
-<p align="center">
-  <img src ="http://s3.postimg.org/8386vdt43/Screen_Shot_2015_07_08_at_8_11_25_PM.png">
-</p>
-
+Use the clues.sql file to write in the SQL queries that correspond with each clue and tell us where she's heading at the bottom.
 
 ## Additional Resources
 
