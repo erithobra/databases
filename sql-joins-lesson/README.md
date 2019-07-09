@@ -1,5 +1,5 @@
 ---
-title: JOINS
+title: SQL JOINS
 type: Lesson
 duration: "1:30"
 creator:
@@ -8,7 +8,7 @@ creator:
 ---
 
 
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) JOINS
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL JOINS
 
 
 ### LEARNING OBJECTIVES
@@ -16,12 +16,6 @@ creator:
 - Identify the reasons to use multiple tables
 * Determine which columns should be primary and foreign keys
 * Implement Join statements to retrieve data from multiple tables
-
-### STUDENT PRE-WORK
-*Before this lesson, you should already be able to:*
-- Create tables in PostgreSQL
-- Use databases in back-end Java apps
-- Identify the reasons to use multiple tables
 
 ### LESSON GUIDE
 
@@ -38,13 +32,15 @@ creator:
 
 Relationships in databases specify the connection between tables and enable you to pull data together in meaningful ways.
 A hefty part of designing a relational database is dividing the data elements into related tables.
-Once you're ready to start working with the data, you rely on relationships between the tables - in practice, this is done with JOINS.
 
+Once you're ready to start working with the data, you rely on relationships between the tables - in practice, this is done with JOINS.
 
 ## Introduction: Review Primary/Foreign Key and PostgreSQL Joins (20 mins)
 
 SQL joins are a way to combine records from two or more tables in a database.
+
 A JOIN is a means for combining fields from two tables by using values common to each.
+
 When we talk about relationships between tables we use two important terms:
 
 - **Primary Key**: column or group of columns that uniquely identify a row. Every table should have a primary key. And a table cannot have more than one primary key.
@@ -86,10 +82,11 @@ SQL defines three major types of joins:
 <p align="center">
   <img src="screenshots/join_types.jpg"/>
 </p>
+
 _Image source: [https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins](https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins)_
         
-An INNER JOIN is the most common type of join and is the default type of join.
-You can use INNER keyword optionally.
+An INNER JOIN is the most common type of join and is the default type of join. You can use INNER keyword optionally.
+
 An INNER JOIN creates a new result table by combining column values of two tables (table1 and table2) based upon the join-predicate.
 
 The query compares each row of table1 with each row of table2 to find all pairs of rows which satisfy the join-predicate. When the join-predicate is satisfied, column values for each matched pair of rows of A and B are combined into a result row.
@@ -103,6 +100,7 @@ SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expressio
 > Check: What do you think common columns to compare between two tables would be?
 
 ## Demo: Inner Joins (15 mins)
+
 Let's consider two tables EMPLOYEES and DEPARTMENTS:   
 
 EMPLOYEES:
@@ -171,10 +169,9 @@ The query result should look like this:
 
 ![](screenshots/results.png )
 
-> Check: With 4 minutes left, review the solution with students.
-
 ## Conclusion (5 mins)
 
 - Why is it important to create different tables? Why should we not have one big table?
 - What types of relationships have you learned about today?
 - What is the most popular type of joins?
+
