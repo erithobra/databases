@@ -5,21 +5,16 @@ duration: '"1:25"'
 creator:
     name: Jim Clark / Micah Rich
     city: LA
-competencies: Databases
 ---
 
-# Intro to NoSQL with Mongo
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Intro to NoSQL with Mongo
 
-### Objectives
+### Lesson Objectives
 - Describe how Mongo databases came about & why they're useful
 - Compare and contrast NoSQL with SQL
 - Define what a document is in the context of MongoDB
 - Explain the difference between embedded and referenced documents, and how we use each to model relationships in MongoDB
 - Issue basic CRUD commands to a database from the Mongo Shell
-
-### Preparation
-- Create an Express app from scratch
-- Use and configure middleware like body-parser to handle form submissions
 
 ## What is MongoDB - Intro (15 mins)
 
@@ -77,7 +72,6 @@ or this...
 ```
 However, it's more common to allow MongoDB to create it implicitly for us using its _ObjectID_ data type.
 
-
 #### MongoDB vs. Relational SQL Databases, Terminology
 
 Wondering what makes noSQL different from SQL? Here's a great analogy from StackOverflow:
@@ -93,9 +87,11 @@ Wondering what makes noSQL different from SQL? Here's a great analogy from Stack
 #### Key Differences of MongoDB
 
 - Schema-less
+
 The documents in a MongoDB collection can have completely different types and number of fields from each other.<br>__How does this compare to a SQL database like PostgreSQL?__
 
 - No Table Joins
+
 In a SQL DB, we break up related data into separate tables.
 
 In MongoDB, we often _embed_ related data in a single document, you'll see an example of this later.
@@ -106,24 +102,22 @@ The supporters of MongoDB highlight the lack of table joins as a performance adv
 
 ![](http://4.bp.blogspot.com/-edz2_QrFvCE/UnzBhKZE3FI/AAAAAAAAAEs/bTEsqnZFTXw/s1600/SQL-MongoDB+Correspondence.PNG)
 
-
-
 ## Installing, Creating a DB, and Inserting Documents - Codealong (15 mins)
 
 #### Installation
 
-You may already have MongoDB installed on your system, lets check in terminal `which mongod` (note the lack of a "b" at the end").
+You may already have MongoDB installed on your system, so let's check in terminal `which mongod` (note the lack of a "b" at the end").
 
 If you get `/usr/local/bin/mongod`, you're golden!
 
-If you get a null response, lets use _Homebrew_ to install MongoDB:
+If you get a null response, let's use _Homebrew_ to install MongoDB:
 
 1. Update Homebrew's database (this might take a bit of time)<br>`brew update`
 2. Then install MongoDB
 
  `brew install mongodb`
 
-1. MongoDB by default will look for data in a folder named `/data/db`. We would have had to create this folder, but Homebrew did it for us (hopefully).
+3. MongoDB by default will look for data in a folder named `/data/db`. We would have had to create this folder, but Homebrew did it for us (hopefully).
    1. run this command in your terminal:
 ```shell
 [ ! -d /data/db ] && sudo mkdir -p /data/db && sudo chown -R $(whoami) /data/db || ls -la /data
@@ -135,8 +129,6 @@ drwxr-xr-x   3 root       wheel   102 Nov 11 13:06 .
 drwxr-xr-x  38 root       wheel  1360 Nov 11 13:06 ..
 drwxr-xr-x   8 jseminara  wheel   272 Nov 11 13:10 db
 ```
-
-
 
 #### Start Your Engine
 
@@ -359,7 +351,7 @@ For the sake of _data consistency_, keeping the account data in its own document
 
 In our app, we have decided that all bank accounts will be retrieved through a person. This decision allows us to include a reference on the person document only.
 
-Implementing the above scenario is as simple as assigning a _bankAccount_ document's *_id* to a new field in our person document:
+Implementing the above scenario is as simple as assigning a _bankAccount_ document's *_id* to a new field in our person document.
 
 Let's first create a bank account:
 
