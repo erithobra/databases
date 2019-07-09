@@ -1,4 +1,10 @@
-# Installing Postgres
+---
+title: Installing PosgreSQL
+type: Lesson
+duration: "0:30"
+---
+
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Installing Postgres
 
 1.  Mac users, run the command `brew install postgres`
 2.  Lets install using-
@@ -17,14 +23,13 @@
 
 ####  LIST ALL THE DATABASES!
 
-* We've provided a cheatsheet of Postgres commands to help you out.
 * First thing's first - run `psql postgres` on the terminal 
-* Now, let'ssee if we have any databases!
+* Now, let's see if we have any databases!
 * `\l` to list **all** databses using the following command:
 
 #### Creating a database
 
-* This is pretty straigtforward!
+* This is pretty straightforward!
 * Let's tell Postgres to create a database with a name!
 * Syntax **matters**. Close each statement with a `;`
 * `CREATE DATABASE mytest;`
@@ -61,7 +66,6 @@ CREATE TABLE users
 * Run the following command:
 * `\dt`
 
-
 #### Adding rows to a database
 
 Check this syntax out:
@@ -77,7 +81,6 @@ VALUES
 * When we add a new row we get an automatic ID!
 * We just specify the attributes to add into.
 * And then we specify the **Values**!
-
 
 #### Selecting rows from a database
 
