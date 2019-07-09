@@ -7,24 +7,21 @@ Author:
     City: NYC
 ---
 
-# Intro to Relational Databases
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Intro to Relational Databases
+
+## Lesson Objectives
+
+By the end of this lesson, students should be able to: 
+- Explain what Relational Databases are used for.
+- Explain how data is organized in relational databases.   
+- Describe the relationship between tables, rows and columns.
+- Understand the basics of database normalization.
+
+## Overview
 
 Relational Databases are a way to store and retrieve data on disk (or many disks). They provide more powerful storage and retrieval capabilities than simple files. They are used in banking, e-commerce, healthcare, and all kinds of Web and enterprise applications. 
 
 Knowing the basics of how they work, and how to use them (with SQL) will allow students to build “full stack” applications which include business logic (Java back-end), a UI (HTML/CSS/JS front-end), plus permanent storage in a database.
-
-## Objectives
-
-By the end of this lesson, students should be able to: 
-
-- Explain what Relational Databases are used for.
-- Explain how data is organized in relational databases.   
-- Describe the relationship between tables, rows and columns.
-- Understand the basics of [database normalization](https://en.wikipedia.org/wiki/Database_normalization).
-
-## References
-
-- [GA WDI - Intro to Relational Data Modeling](https://git.generalassemb.ly/ed-product-library/wdi-curriculum/blob/master/resources/05-databases/data-modeling-intro-lesson/)
 
 ## What are Databases? - Intro (15 mins)
 
@@ -53,7 +50,6 @@ Let's say we're making an app for a library and look at what some tables would l
 - What would the table for a category look like?
 
 See, this is when we start seeing relationships form. This is great. You can imagine duplicate pieces of data being stored naturally, especially when an author has multiple books, for instance. That's a waste of space!  So, let's talk about how we can connect these tables, this way, we don't have tons of duplicate data all over the place.
-
 
 ## Explaining Relational Databases by comparing them to Spreadsheets (10 minutes) 
 
