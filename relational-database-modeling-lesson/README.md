@@ -7,22 +7,18 @@ Author:
     City: NYC
 ---
 
-# Relational Database Modeling
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Relational Database Modeling
 
-Students need to understand tables and relationships between them so that they can write SQL in the next lesson to store and operate on data in relational databases. We'll use Crow's Foot notation to create Entity-Relationship (ER) diagrams that represent relational database models.
-
-## Objectives
+## Lesson Objectives
 
 - Describe the relationship between tables, rows, and columns.
 - Draw entity relationship diagrams with crow's foot notation.
 - Describe how tables relate to each other using foreign keys.
 - Explain the different relationship types – has_many_through, has_and_belongs_to_many, belongs_to.
-- Get hands-on practice building ERDs.
 
-## References
+## Overview
 
-- [GA WDI - Intro to Relational Data Modeling](https://git.generalassemb.ly/ed-product-library/wdi-curriculum/blob/master/resources/05-databases/data-modeling-intro-lesson/)
-- [GA WDI - Practice Database Design](https://git.generalassemb.ly/ed-product-library/wdi-curriculum/tree/master/resources/05-databases/data-modeling-erd-design-lab)
+Students need to understand tables and relationships between them so that they can write SQL in the next lesson to store and operate on data in relational databases. We'll use Crow's Foot notation to create Entity-Relationship (ER) diagrams that represent relational database models.
 
 ## Relationships - Whiteboard Demo (30 mins)
 
@@ -74,11 +70,9 @@ ___Deliverable___
 
 An ERD diagram, using crow's foot notation, of whatever app you choose.  For example:
 
-
 ![ER Diagram Example](https://www.edrawsoft.com/images/examples/entity-relationship-diagram.png)
 
 > Note: this example has "Items" as placeholders for the attributes.
-
 
 ### Additional Resources
 
