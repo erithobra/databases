@@ -13,15 +13,15 @@ creator:
 
 > ***Note:*** _This should be done independently._
 
-In this lab, you will create SQL scripts for Postgres that will create and initialize a database with two tables - Employee and Job, and then query the data in those tables. 
+In this lab, you will create SQL scripts for Postgres that will create and initialize a database with two tables (Employee and Job) and then query the data in those tables. 
 
-Employee table has the following data:  
+The Employee table has the following data:  
 
 <p align="center">
   <img src="./screenshots/employee.png">  
 </p>
 
-Job table looks like this:  
+The Job table looks like this:  
 
 <p align="center">
   <img src="./screenshots/job.png">   
@@ -29,9 +29,9 @@ Job table looks like this:
 
 The main purpose of our scripts is to query information from both tables:  
 
-1.  Show the full name of employees working at Macys
-2.  Show the companies located in Boston  
-3.  Show the full name of the employee with the highest salary  
+1.  Show the full names of employees working at Macy's.
+2.  Show the companies located in Boston.  
+3.  Show the full name of the employee with the highest salary.  
 
 
 ## Exercise
@@ -39,14 +39,14 @@ The main purpose of our scripts is to query information from both tables:
 ### Requirements
 
 An ``init_db.sh`` script should:  
-  1. Create the database 
-  1. Create the tables
-  1. Populate the tables
+  1. Create the database. 
+  1. Create the tables.
+  1. Populate the tables.
 
 A ``run_queries.sh`` script should run three queries, one for each of the following:
-  1. **Employees working at macys** - the full names of employees working at Macys
-  1. **Companies in Boston** - the companies located in Boston
-  1. **Employee with the highest salary** - the employee name with the highest salary
+  1. **Employees working at macys** - The full names of employees working at Macy's.
+  1. **Companies in Boston** - The companies located in Boston.
+  1. **Employee with the highest salary** - The full name of the employee with the highest salary.
 
 *Note: Those two files can call other files if you wish.*
 
