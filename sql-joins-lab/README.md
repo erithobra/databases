@@ -1,5 +1,5 @@
 ---
-title: SQL Joins
+title: SQL JOINs
 type: Lab
 duration: "1:30"
 creator:
@@ -7,7 +7,7 @@ creator:
     city: NYC
 ---
 
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL Joins Lab
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL JOINs Lab
 
 ## Introduction
 
@@ -44,7 +44,7 @@ An ``init_db.sh`` script should:
   1. Populate the tables.
 
 A ``run_queries.sh`` script should run three queries, one for each of the following:
-  1. **Employees working at macys** - The full names of employees working at Macy's.
+  1. **Employees working at Macy's** - The full names of employees working at Macy's.
   1. **Companies in Boston** - The companies located in Boston.
   1. **Employee with the highest salary** - The full name of the employee with the highest salary.
 
