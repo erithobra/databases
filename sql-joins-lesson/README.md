@@ -13,9 +13,9 @@ creator:
 
 ### LEARNING OBJECTIVES
 *After this lesson, you will be able to:*
-- Identify the reasons to use multiple tables
-* Determine which columns should be primary and foreign keys
-* Implement Join statements to retrieve data from multiple tables
+- Identify the reasons to use multiple tables.
+* Determine which columns should be primary and foreign keys.
+* Implement join statements to retrieve data from multiple tables.
 
 ### LESSON GUIDE
 
@@ -30,10 +30,9 @@ creator:
 
 ## Opening (5 mins)
 
-Relationships in databases specify the connection between tables and enable you to pull data together in meaningful ways.
-A hefty part of designing a relational database is dividing the data elements into related tables.
+Relationships in databases specify the connection between tables and enable you to pull data together in meaningful ways. A hefty part of designing a relational database is dividing the data elements into related tables.
 
-Once you're ready to start working with the data, you rely on relationships between the tables - in practice, this is done with JOINS.
+Once you're ready to start working with the data, you rely on relationships between the tables; in practice, this is done with joins.
 
 ## Introduction: Review Primary/Foreign Key and PostgreSQL Joins (20 mins)
 
