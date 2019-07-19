@@ -34,7 +34,7 @@ Great. Now let's break down that acrony: ACID.
 
 **Durability:** Once a transaction is complete, it doesn't just say "See ya!" and ride off into the sunset. Any changes that are made must be permanently stored in the database's memory. And if something goes wrong, the record of the transaction still exists and is always accessible in the database.
 
-The goal of any good database is to be "ACID compliant," meaning that all transactions that happen abide by these rules.
+The goal of any good database is to be *"ACID compliant,"* meaning that all transactions that happen abide by these rules.
 
 --- 
 
@@ -42,24 +42,34 @@ The goal of any good database is to be "ACID compliant," meaning that all transa
 
 We know what ACID is all about now. It's time to bring things down to real life!
 
-We've listed a few scenarios that are actual, real life examples of database transactions that happen all the time. With a partner, review the scenarios. Think through:
-- Which part(s) of ACID is this dealing with?
+We've listed a few scenarios that are real life examples of database transactions that happen all the time. With a partner, review the scenarios. Think through:
+- Which ACID principle(s) is this dealing with?
 - Assuming the DB is ACID compliant, what should happen?
-- What would happen if the DB is **not** ACID compliant? What are the risks?
+- What would happen if the DB is **not** ACID compliant? What could go wrong in this transaction?
 
 **Meet the scenarios:**
 
-- You’re shopping on an e-commerce site, you must have an item in your cart in order to pay for it. What you can’t do is pay for something that’s not in your cart. 
-- imagine you and your neighbor are both trying to buy something from the same e-commerce platform at the same time. There are 10 items for sale: your neighbor wants five and you want six. Isolation means that one of those transactions would be completed ahead of the other one. In other words, if your neighbor clicked first, they will get five items, and only five items will be remaining in stock. So you will only get to buy five items. If you clicked first, you will get the six items you want, and they will only get four. Thus, isolation ensures that eleven items aren’t sold when only ten exist.
-- Imagine you’re buying in-demand concert tickets on a site similar to Ticketmaster.com. Right when tickets go on sale, you’re ready to make a purchase. After being stuck in the digital waiting room for some time, you’re finally able to add those tickets to your cart. You then make the purchase and get your confirmation. However if that database lacks durability, even after your ticket purchase was confirmed, if the database suffers a failure incident your transaction would still be lost!
-- Bank transaction
+- You and your brother are both trying to buy the same 12-pack of Pamplemousse La Croix from Amazon at the same time. There are 10 packs available; your brother wants five and you want six.
+- You're trying to buy tickets from Ticketmaster to see Taylor Swift's new tour. The tickets go on sale at 12pm, and you're ready to purchase as soon as the clock strikes noon. After being stuck in the digital waiting room for some time, you’re finally able to add those tickets to your cart, make the purchase, and get your confirmation. All of the sudden, the site goes down (probably overrun by ravenous T-Swift fans).
+- You send a 5-page document to the printer. While it's working on page 3, the printer runs out of toner.
 
-----
+Let's look at a more general example, too. Imagine that you're transferring $1,000 out of your checking account to pay off your credit card bill.
 
-## How Does ACID Fit In?
+For this scenario, think through:
+- What are all of the steps that make up this transaction?
+- How does each ACID component come into play during the transaction?
+- What should happen if everything goes smoothly?
+- What should happen if something goes wrong?
 
-By now you probably get it: ACID is really important to the way we set up our databases, transactions, and interactions. But how does it affect the apps we're working on? 
+---
 
+## What's the Big Deal?
+
+Thinking through these scenarios should give you a pretty good handle on the difference ACID makes in our applications. Luckily for us, most databases are ACID compliant without us even having to think about it. And Spring takes care a lot of this work for us, too. Phew!
+
+That being said, it's important to understand the concepts so that you know what's happening behind the scenes.
+
+> Check: As you're working on your project (the posting application), what ACID properties might come into play in the way your app handles data?
 
 
 
