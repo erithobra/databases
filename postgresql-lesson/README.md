@@ -25,7 +25,7 @@ duration: "0:30"
 
 * First thing's first - run `psql postgres` on the terminal 
 * Now, let's see if we have any databases!
-* `\l` to list **all** databses using the following command:
+* `\l` to list **all** databases
 
 #### Creating a database
 
