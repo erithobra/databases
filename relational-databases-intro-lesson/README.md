@@ -1,7 +1,7 @@
 ---
 Title: Intro to Relational Databases
-Type: Lesson
-Duration: "2:00"
+Type: Morning Exercise
+Duration: "1:00"
 Author:
     Name: Alex De Marco
     City: NYC
@@ -38,7 +38,7 @@ We call these databases "relational" because different models (or pieces of data
 
 ![relational db](https://cloud.githubusercontent.com/assets/25366/8589355/2646c588-25ca-11e5-9f2d-3d3afe8b7817.png)
 
-## We Do: Let's Draw on The Board (30 min)
+## We Do: Let's Draw on The Board (20 min)
 
 > **Instructor Note**: This lesson explains the basic idea around taking a real-world data problem and organizing a solution in tables and relationships between tables.
 
@@ -50,9 +50,9 @@ Let's say we're building an app for a library. Consider what some tables would l
 - What would the table for an author look like?
 - What would the table for a category look like?
 
-This is when we start seeing relationships form. This is great! You can imagine duplicate pieces of data being stored naturally, especially when an author has multiple books (for instance). That's a waste of space! Let's talk about how we can connect these tables so we don't have tons of duplicate data all over the place.
+This is when we start seeing relationships form. This is great! You can imagine duplicate pieces of data being stored naturally, especially when an author has multiple books (for instance). That's a waste of space! We'll later talk about how we can connect these tables so we don't have tons of duplicate data all over the place.
 
-## Relational Databases vs. Spreadsheets (10 min) 
+## Relational Databases vs. Spreadsheets (15 min) 
 
 > **Instructor Note**: This lesson explains the process of [database normalization](https://en.wikipedia.org/wiki/Database_normalization) by starting with a spreadsheet with lots of duplicated data and then reorganizing that data into a relational database with less duplication.
 
@@ -66,28 +66,8 @@ Finally, notice how you'd want to sum up the `Quantity in Stock` to find out how
 
 The process of de-duplicating data when you design a relational database is called **normalization**. Going the other way is called **denormalization**, or "flattening" your data.
 
-### Let's Work on an Example Together (50 min):
 
-> **Instructor Note**: State the problem below. Let students work on it on their own for a while (maybe 10–15 minutes). Then, work through the solution in the rest of the time available (35 minutes). 
-
-Say you run a tire store. You have a spreadsheet of your tire inventory. You sell 16 different models of tires in different sizes from three vendors: Michelin, Bridgestone, and Pirelli. You have more than a thousand tires in your inventory. You can get started with [this spreadsheet](Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
- 
-Describe how you would convert your spreadsheet into a relational database model so that: 
-1. Vendor names `Michelin`, `Bridgestone`, and `Pirelli` are listed once, not repeated many times in many rows and tables.
-1. Tire models are listed once, not repeated many times in many tables.
-1. Tire size combinations (`width`, `aspect ratio`, `diameter`) should also only be in one table (not repeated many times). Hint: There are actually seven sizes in the spreadsheet.
-
-> Solution: 
-> - One table called `Vendor` with three rows — one for each vendor.
-> - One table called `Model` with 16 rows — one for each model.
-> - One table called `Size` with seven rows — one for a tuple of (`width`, `aspect ratio`, `diameter`).
-> - One table called `Inventory` with a maximum of 3x16x7 rows. Each row has a relationship to `Vendor`, `Model`, `Size` (i.e., foreign keys) and an integer for `Quantity in Stock`.
-
-__Bonus__: Design your model so that it would be impossible for a user to enter invalid vendor-model pairs into your inventory. For example, invalid pairs would be (`Pirelli`, `Ecopia`) or (`Michelin`, `Nero`).  
-
-> **Instructor Note**: There are at least a couple of ways to complete this bonus question. One way is to combine `Vendor` and `Model` into one table. If you do this, your data would not be normalized, because you'd be repeating the `Vendor` name many times, but maybe that's OK. Another way is to create a new table, called `VendorModel`, which relates only valid `Vendor` and `Model` rows to each other. Then, each row of `Inventory` would relate to `VendorModel`, instead of `Vendor` and `Model` separately.    
-
-## Conclusion (15 min)
+## Conclusion (10 min)
 
 - Why would you use a relational database? 
 - Why use a relational database instead of a NoSQL database (assuming NoSQL has been taught in a prior lesson)?

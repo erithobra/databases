@@ -3,8 +3,8 @@ title: Intro to SQL
 type: lesson
 duration: "1:25"
 creator:
-    name: Jay Nappy
-    city: NYC
+    name: Jay Nappy & Isha Arora
+    
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Intro to SQL
@@ -18,7 +18,7 @@ creator:
 
 ## Intro: We Know About Databases, But What Is SQL? (10 min)
 
-Let's review: At its simplest, a **relational database** is a mechanism for storing and retrieving data in a tabular form. Spreadsheets are a good analogy! But, how do we interact with our database (inserting, updating, retrieving, and deleting data)? That's where SQL comes in!
+Let's review: At its simplest, a **relational database** is a mechanism for storing and retrieving data in a tabular form. But, how do we interact with our database (inserting, updating, retrieving, and deleting data)? That's where SQL comes in!
 
 #### What Is SQL?
 
@@ -42,104 +42,96 @@ A database is just a repository for storing data, and you need to use systems to
 
 All of these management systems use SQL (or some adaptation of it) as a language for managing data in the system.
 
+## Installing Postgres
+
+1.  Mac users, run the command `brew install postgres`
+2.  Lets install using-
+
+	3.  [Post gres app](https://postgresapp.com/)
+	3.  Move the app to your `/Applications/` directory.
+	4.  Now, double-click it to run it.
+	5.  Select **Open Postgres** in the bottom-right corner.
+			
+			OR
+			
+	1. Run `brew tap homebrew/services` to install brew services.
+	2. Then run `brew services start postgresql` to start postgres as a background service
+	3. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
+
+
 ## Code-Along: Connect and Create a Database (10 min)
 
-Let's create a database! First, make sure you have PostgreSQL running. Once you do, open your terminal and type:
+Let's create a database! First thing's first, make sure you have PostgreSQL running. Once you do, open your terminal and type:
 
 ```bash
-$ psql
+$ psql postgres
 ```
 
 You should see something like:
 
 ```bash
-your_user_name=#
+postgres=# 
 ```
 
 Great! Now, you can execute PSQL commands (or PostgreSQL's version of SQL).
 
-Let's use these commands; but before we can, we must create a database. Let's call it `generalassembly`:
+Let's use these commands but before we can, we must create a database. Let's call it `generalassembly`:
 
 ```psql
-your_user_name=# CREATE DATABASE generalassembly;
+postgres=# CREATE DATABASE generalassembly;
 CREATE DATABASE
 ```
 
 The semicolon is important! Be sure to always end your SQL queries and commands with semicolons.
 
+To remove a database run, `DROP DATABASE <databasename>;`. 
+
 Now let's _use_ that database we just created:
 
 ```psql
-your_user_name=# \c generalassembly
+postgres=# \c generalassembly
 You are now connected to database "generalassembly" as user "your_user_name".
 generalassembly=#
 ```
 
-## Demo: Create a Table (10 min)
+You can also connect directly to your database once it is created in postgres.
 
-Now that we have a database, let's create a table. (Think of this like: "Hey, now that we have a workbook/worksheet, let's block off these cells with a border and labels to show it's a unique set of values.")
+```bash
+$ psql generalassembly
+generalassembly=#
+```
 
-#### SQL Style Guide (See http://www.sqlstyle.guide)
+To exit from postgres shell either type `exit` OR do `ctrl+d`.
+
+#### SQL Style Guide 
 
 1. Fields should *always* be lower case.
 2. SQL _keywords_ should always be upper case. 
 2. Never name a field `id`; always correlate it to the table name (e.g., `student_id`).
-3. Always check your company's style guide or follow the convention; never create your own style.
+3. Always check your company's style guide or follow the convention. Never create your own style.
 
-```sql
-CREATE TABLE instructors (
-  instructor_id SERIAL PRIMARY KEY NOT NULL,
-  name TEXT NOT NULL,
-  experience INT NOT NULL,
-  website VARCHAR(50)
-);
-```
+These are just widely accepted naming conventions. Postgres will not throw any error if either or all of these are not followed. You can read more about it  [here](http://www.sqlstyle.guide).
 
-When we paste this into PSQL:
-
-```psql
-generalassembly=# CREATE TABLE instructors (
-generalassembly(#  instructor_id  SERIAL PRIMARY KEY   NOT NULL,
-generalassembly(#  name           TEXT          NOT NULL,
-generalassembly(#  experience     INT           NOT NULL,
-generalassembly(#  website        CHAR(50)
-generalassembly(#  );
-CREATE TABLE
-```
-
-Notice the different parts of these commands:
-
-```psql
-generalassembly=# CREATE TABLE instructors (
-```
-This starts our table creation; it tells PostgreSQL to create a table named `instructors`...
-
-```psql
-generalassembly(#  instructor_id        SERIAL   PRIMARY KEY   NOT NULL,
-generalassembly(#  name      TEXT                NOT NULL,
-```
-
-...then, each successive line denotes a new column we're going to create for this table, what the column will be called, the data type, whether or not it's a primary key, and if the database (when data is added) can allow data without missing values. In this case, we're not allowing `name` or `instructor_id` to remain blank; but we're OK with `website` being blank.
 
 ## Code-Along: Create a Student Table and Insert Data (10 min)
 
-Now that we're keeping track of our instructors, let's create a table for students that collects information about:
+Now that we have a database, let's create a table. (Think of this like: "Hey, now that we have a workbook/worksheet, let's block off these cells with a border and labels to show it's a unique set of values.")
 
-- An `id` (cannot be left blank).
+Let's create a table for students that collects information about:
+
+- An `student_id` (primary key).
 - The student's name (cannot be left blank).
-- Their age.
-- Their address (cannot be left blank).
+- Their age (cannot be left blank).
+- Their address.
 
-> **Instructor Note**: Remembering the commands we just went over, students should try to guide the instructors through this!  
-
-Here's what that query should have looked like:
+Here's how you create a table in SQL:
 
 ```sql
 CREATE TABLE students (
-  student_id SERIAL PRIMARY KEY NOT NULL,
-        name TEXT NOT NULL,
-         age INT NOT NULL,
-     address VARCHAR(50)
+  student_id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  age INT NOT NULL,
+  address VARCHAR(50)
 );
 ```
 
@@ -147,14 +139,36 @@ In PSQL, that will look like:
 
 ```psql
 generalassembly=# CREATE TABLE students (
-generalassembly(#  student_id  SERIAL   PRIMARY KEY   NOT NULL,
+generalassembly(#  student_id  SERIAL   PRIMARY KEY,
 generalassembly(#  name        TEXT                NOT NULL,
 generalassembly(#  age         INT                 NOT NULL,
 generalassembly(#  address     VARCHAR(50)
 generalassembly(#  );
 CREATE TABLE
 ```
-Great job! Now let's finally _insert_ some data into that table. Remember what cannot be left blank!
+
+Let's break this query down one by one,
+
+```psql
+generalassembly=# CREATE TABLE students (
+```
+This starts our table creation, it tells PostgreSQL to create a table named `students`...
+
+```psql
+generalassembly(#  student_id SERIAL PRIMARY KEY,
+generalassembly(#  name 	  TEXT 		        NOT NULL,
+generalassembly(#  age        INT               NOT NULL,
+```
+
+...then, each successive line denotes a new column we're going to create for this table, what the column will be called, the data type, whether or not it's a primary key, and if the database (when data is added) can allow data without missing values. 
+
+In this case, `student_id ` is our primary key which will be serially generated by our database. A **Primary Key** in relational databases help uniquely identify records in a table. Every table must have a primary key and it cannot be null. 
+
+We're not allowing `name` and `age` to remain blank, this is called as not-null constraint, but we're OK with `address` being blank.
+
+You can use `\d+ <tablename>` to describe a table.
+
+### Insert
 
 We'll insert five students: Jack, Jill, John, Jackie, and Slagathorn. The syntax is as follows:
 
@@ -172,6 +186,12 @@ In PSQL, that will look like:
 ```psql
 generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '50 Main St, New York, NY');
 INSERT 0 1
+```
+
+We can also part of the columns' values and not all of them. Lets say we don't want to give `student_id` and `address`, we'll have to make a small change in the insert query.
+
+```
+INSERT INTO students (name, age) VALUES ('Captain Barbossa', 38);
 ```
 
 ## Independent Practice: Insert Data (10 min)
@@ -223,14 +243,15 @@ For example, we can get all of the records back:
 
 ```psql
 generalassembly=# SELECT * FROM students;
- id |      name      | age |                      address
-----+----------------+-----+----------------------------------------------------
-  1 | Jack Sparrow   |  28 | 50 Main St, New York, NY
-  2 | Jilly Cakes    |  30 | 123 Webdev Dr. Boston, MA
-  3 | Johnny Bananas |  25 | 555 Five St, Fivetowns, NY
-  4 | Jackie Lackie  | 101 | 2 OldForThis Ct, Fivetowns, NY
-  5 | Slaggy McRaggy |  28 |
-(5 rows)
+ student_id |       name       | age |            address             
+------------+------------------+-----+--------------------------------
+          1 | Jack Sparrow     |  28 | 50 Main St, New York, NY
+          2 | Captain Barbossa |  38 | 
+          3 | Jilly Cakes      |  30 | 123 Webdev Dr. Boston, MA
+          4 | Johnny Bananas   |  25 | 555 Five St, Fivetowns, NY
+          5 | Jackie Lackie    | 101 | 2 OldForThis Ct, Fivetowns, NY
+          6 | Slaggy McRaggy   |  28 | 
+(6 rows)
 ```
 
 We can get just the names and ages of our students:
@@ -247,7 +268,7 @@ generalassembly=# SELECT name, age FROM students;
 (5 rows)
 ```
 
-#### Getting More Specific
+### Getting More Specific: WHERE Clause
 
 As with Java or JavaScript, all of our comparison and Boolean operators can help us select more specific data.
 
@@ -316,27 +337,27 @@ We can find strings within strings, too!
 OK, there are some mistakes we've made to our database, but that's cool, because we can update it or delete information we don't like. Let's start by adding one more student:
 
 ```psql
-generalassembly=# INSERT INTO students VALUES (6, 'Miss Take', 500, 'asdfasdfasdf');
+generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Miss Take', 500, 'asdfasdfasdf');
 INSERT 0 1
 ```
+### Update 
 
 But, oh no, we messed them up! Miss Take doesn't live at asdfasdfasdf; she lives at 100 Main St., New York, NY. Let's fix it:  
 
 ```psql
-generalassembly=# UPDATE students SET address = '100 Main St., New York, NY' where address = 'asdfasdfasdf';
+generalassembly=# UPDATE students
+generalassembly-# SET address = '100 Main St., New York, NY'
+generalassembly-# WHERE address = 'asdfasdfasdf';
 UPDATE 1
 
-generalassembly=# SELECT * FROM students;
+generalassembly=# SELECT * FROM students WHERE name = 'Miss Take';
  id |      name      | age |                      address
 ----+----------------+-----+----------------------------------------------------
-  1 | Jack Sparrow   |  28 | 50 Main St, New York, NY
-  2 | Jilly Cakes    |  30 | 123 Webdev Dr. Boston, MA
-  3 | Johnny Bananas |  25 | 555 Five St, Fivetowns, NY
-  4 | Jackie Lackie  | 101 | 2 OldForThis Ct, Fivetowns, NY
-  5 | Slaggy McRaggy |  28 |
-  6 | Miss Take      | 500 | 100 Main St., New York, NY
-(6 rows)
+  7 | Miss Take      | 500 | 100 Main St., New York, NY
+(1 row)
 ```
+
+### Delete
 
 But wait, she just canceled. No big deal!
 
