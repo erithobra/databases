@@ -14,6 +14,8 @@ Get ready, because we've got another acronym for you: **ACID**.
 
 ACID is a series of principles that should be followed whenever you modify a database. The goal in using these principles is to maintain a stable, consistent database, both before and after whatever operation you're performing.
 
+These properties are the reason why all banking, healthcare, financial companies use relational databases.
+
 ---
 
 ## First Things First: Definitions
