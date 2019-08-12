@@ -3,35 +3,35 @@ Title: Relational Database Modeling
 Type: Lab
 Duration: "1:00"
 Author:
-    Name: Alex De Marco
+    Name: Alex De Marco and Isha Arora
+    
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Relational Database Modeling
 
-## Overview
+## ERD (5 min)
+[Entity Relationship Diagram](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/), also known as ERD, ER Diagram or ER model, is a type of structural diagram for use in database design. An ERD contains different symbols and connectors that visualize two important information: The major entities within the system scope, and the inter-relationships among these entities.
+
+And that's why it's called "Entity" "Relationship" diagram (ERD)!
 
 We'll use crow's foot notation to create entity relationship diagrams (ERDs) that represent relational database models.
 
-## Whiteboard Demo: Relationships (15 min)
+### Let's Work on an Example Together (10 min):
 
-Relationships happen when we start seeing multiple occurrences of duplicative information, or when one object needs to "connect" to another object.
+Together as a group we will create an ERD of the database we built yesterday for General Assembly. 
 
-There are three different kinds of relationships:
+Let's first list out all the entities we created,
 
-### One to One
-- Not frequently used, but important to know it's an option.
-- Imagine that a `library` table ```has_one``` location and a location ```belongs_to``` a specific library. This allows us to perform a lookup based solely on location and see the connected library.
-- Oftentimes in situations like this, you can make the location an attribute of the library. But, when a location has, for example, multiple fields (`address 1`, `address 2`, `state`, `zip`, etc.), it might make sense to create another table for addresses and set up a ```has_one``` relationship.
+- Student
+- Address
+- Instructor
+- Course
 
-### One to Many
-- This is the most common type of database relationship.
-- An author ```has_many``` books, but a book ```belongs_to``` only one author.
+Now we'll go over howwe created the ERD given below,
 
-### Many to Many
-- This is also very frequent.
-- A book probably ```has many``` categories and a category also probably ```has many``` books.
+You can use ERD Caridality for reference.
 
-Keep in mind that the ```belongs_to``` part always goes on the opposite side of the ```has_many``` or ```has_one```. The `ID` of the model that "has" something is stored in a field on the child, such as `customer_id` or `author_id`. In our example with authors and books, the book model ```belongs_to``` the author model, while the author (as mentioned) ```has_many``` books.
+![](./images/erd_cardinality.png)
 
 ## Lab: Practice Database Design (45 min)
 
@@ -43,14 +43,22 @@ Remember to consider all different angles in each of these examples. What job re
 
 ### Exercise
 
-___Requirements___
+Say you run a tire store. You have a spreadsheet of your tire inventory. You sell 16 different models of tires in different sizes from three vendors: Michelin, Bridgestone, and Pirelli. You have more than a thousand tires in your inventory. You can get started with [this spreadsheet](Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
+ 
+Describe how you would convert your spreadsheet into a relational database model so that: 
+1. Vendor names `Michelin`, `Bridgestone`, and `Pirelli` are listed once, not repeated many times in many rows and tables.
+1. Tire models are listed once, not repeated many times in many tables.
+1. Tire size combinations (`width`, `aspect ratio`, `diameter`) should also only be in one table (not repeated many times). Hint: There are actually seven sizes in the spreadsheet.
 
-- In your group, pick one of the following, design the table relationships, and draw them:
+> Solution: 
+> - One table called `Vendor` with three rows — one for each vendor.
+> - One table called `Model` with 16 rows — one for each model.
+> - One table called `Size` with seven rows — one for a tuple of (`width`, `aspect ratio`, `diameter`).
+> - One table called `Inventory` with a maximum of 3x16x7 rows. Each row has a relationship to `Vendor`, `Model`, `Size` (i.e., foreign keys) and an integer for `Quantity in Stock`.
 
-  - An app to run a grocery store.
-  - An app to run an airline.
-  - An app to run a school.
-  - An app to run a team of developers.
+__Bonus__: Design your model so that it would be impossible for a user to enter invalid vendor-model pairs into your inventory. For example, invalid pairs would be (`Pirelli`, `Ecopia`) or (`Michelin`, `Nero`).  
+
+> **Instructor Note**: There are at least a couple of ways to complete this bonus question. One way is to combine `Vendor` and `Model` into one table. If you do this, your data would not be normalized, because you'd be repeating the `Vendor` name many times, but maybe that's OK. Another way is to create a new table, called `VendorModel`, which relates only valid `Vendor` and `Model` rows to each other. Then, each row of `Inventory` would relate to `VendorModel`, instead of `Vendor` and `Model` separately.    
 
 ___Deliverable___
 

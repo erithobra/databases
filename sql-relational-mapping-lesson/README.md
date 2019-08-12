@@ -13,6 +13,8 @@ Like we have discussed earlier, what makes SQL database relational is that each 
 
 
 ## Relational Mapping
+Relationships happen when we start seeing multiple occurrences of duplicative information, or when one object needs to "connect" to another object.
+
 There are 3 ways how one table can be linked to another. Each is used in partcular scenarios. We will look at all 3 and their implementation one by one.
 
 ### One to One
