@@ -1,7 +1,7 @@
 ---
 title: SQL Basics
 type: lab
-duration: "1:25"
+duration: "2:00"
 creator: Melissa Arliss, pulled from ed-prob-lib
 ---
 
@@ -69,7 +69,6 @@ After that, use the clues below to create the appropriate SQL queries to help yo
   So I'm off to add one to the population I find
   In a city of ninety-one thousand and, now, eighty five.
 ```
-
 
 #### Starter Code
 
