@@ -1,4 +1,4 @@
---
+---
 title: Flying with SQL
 type: lab
 duration: "1:00"
