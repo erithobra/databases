@@ -1,26 +1,39 @@
 ---
 title: Intro to SQL
 type: lesson
-duration: 2:00
+duration: "1:55"
 creator:
     name: Jay Nappy & Isha Arora
-    
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Intro to SQL
 
-### Objectives
+### Learning Objectives
 
 *After this lesson, students will be able to:*
 
 - Create a database table.
 - Insert, retrieve, update, and delete a row (or rows) of a database table.
 
+### Lesson Overview
+
+| TIMING  | TYPE  | TOPIC  |
+|:-:|---|---|
+| 10 min | Opening         | Discuss lesson objectives |
+| 15 min | Guided Practice | Installing Postgres |
+| 15 min | Guided Practice | Connect and Create a Database |
+| 15 min | Guided Practice | Create a Table and Insert Data |
+| 15 min | Independent Practice | Insert Data |
+| 15 min | Guided Practice | What's in Our Database? |
+| 10 min | Guided Practice | Updates to Our Database |
+| 15 min | Independent Practice | SQL Challenges |
+| 5 min  | Conclusion      | Review / Recap |
+
 ## Intro: We Know About Databases, But What Is SQL? (10 min)
 
 Let's review: At its simplest, a **relational database** is a mechanism for storing and retrieving data in a tabular form. But, how do we interact with our database (inserting, updating, retrieving, and deleting data)? That's where SQL comes in!
 
-#### What Is SQL?
+### What Is SQL?
 
 SQL stands for **Structured Query Language**, and it's a language that's universally used and adapted to interact with relational databases. When you use a SQL client and connect to a relational database that contains tables with data, the scope of what you can do with SQL commands includes:
 
@@ -32,7 +45,7 @@ SQL stands for **Structured Query Language**, and it's a language that's univers
 
 Note that all of these actions depend on what the database administrator sets for user permissions. If you're an analyst, for example, you'll only have access to retrieving company data. But, as a developer, you could access all of these commands and be in charge of setting the database permissions for your web or mobile application.
 
-#### Why Is SQL Important?
+### Why Is SQL Important?
 
 A database is just a repository for storing data, and you need to use systems to dictate how that data will be stored and how clients will interact with it. We call these systems **database management systems**, and they come in _many_ forms:
 
@@ -42,10 +55,12 @@ A database is just a repository for storing data, and you need to use systems to
 
 All of these management systems use SQL (or some adaptation of it) as a language for managing data in the system.
 
+------
+
 ## Installing Postgres (15 min)
 
 1.  Mac users, run the command `brew install postgres`
-2.  Lets install using-
+2.  Let's install Postgres:
 
 	3.  [Post gres app](https://postgresapp.com/)
 	3.  Move the app to your `/Applications/` directory.
@@ -58,6 +73,7 @@ All of these management systems use SQL (or some adaptation of it) as a language
 	2. Then run `brew services start postgresql` to start postgres as a background service
 	3. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
 
+------
 
 ## Code-Along: Connect and Create a Database (15 min)
 
@@ -103,15 +119,16 @@ generalassembly=#
 
 To exit from postgres shell either type `exit` OR do `ctrl+d`.
 
-#### SQL Style Guide 
+### SQL Style Guide 
 
 1. Fields should *always* be lower case.
 2. SQL _keywords_ should always be upper case. 
 2. Never name a field `id`; always correlate it to the table name (e.g., `student_id`).
 3. Always check your company's style guide or follow the convention. Never create your own style.
 
-These are just widely accepted naming conventions. Postgres will not throw any error if either or all of these are not followed. You can read more about it  [here](http://www.sqlstyle.guide).
+These are widely accepted naming conventions. Postgres will not throw errors if any or all of these are not followed. You can read more about it [here](http://www.sqlstyle.guide).
 
+------
 
 ## Code-Along: Create a Student Table and Insert Data (15 min)
 
@@ -147,11 +164,12 @@ generalassembly(#  );
 CREATE TABLE
 ```
 
-Let's break this query down one by one,
+Let's break this query down one by one:
 
 ```psql
 generalassembly=# CREATE TABLE students (
 ```
+
 This starts our table creation, it tells PostgreSQL to create a table named `students`...
 
 ```psql
@@ -181,6 +199,7 @@ Let's do it for Jack:
 ```sql
 INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999-999-9999');
 ```
+
 In PSQL, that will look like:
 
 ```psql
@@ -188,13 +207,15 @@ generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999
 INSERT 0 1
 ```
 
-We can also part of the columns' values and not all of them. Lets say we don't want to give `student_id` and `mobile`, we'll have to make a small change in the insert query.
+We can change *part* of the columns' values without changing *all* of them. Let's say that we don't want to give someone a `student_id` and a `mobile`, so we'll have to make a small change in the insert query.
 
 ```
 INSERT INTO students (name, age) VALUES ('Captain Barbossa', 38);
 ```
 
-## Independent Practice: Insert Data (10 min)
+------
+
+## Independent Practice: Insert Data (15 min)
 
 Now, try it for the other students and pay attention to the order of Jack's parameters and the single quotes; they both matter.
 
@@ -225,6 +246,7 @@ generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Slaggy McRaggy', 28);
 INSERT 0 1
 ```
 
+-----
 
 ## Code-Along: What's in Our Database? (15 min)
 
@@ -233,6 +255,7 @@ Now that we have this data saved, we're going to need to access it at some point
 ```psql
 SELECT column1, column2, column3 FROM table_name;
 ```
+
 We can pass in the columns we want to look at (such as above), or even get all of our table records:
 
 ```psql
@@ -273,7 +296,7 @@ generalassembly=# SELECT name, age FROM students;
 
 As with Java or JavaScript, all of our comparison and Boolean operators can help us select more specific data.
 
-- Say I want the names of all of the students who aren't dinosaurs:
+Say I want the names of all of the students who aren't dinosaurs:
 
 ```psql
 generalassembly=# SELECT name FROM students WHERE age < 38;
@@ -288,8 +311,7 @@ generalassembly=# SELECT name FROM students WHERE age < 38;
 
 Done! 
 
-- How about the names of students ordered by age?
-
+How about the names of students ordered by age?
 
 ```psql
 generalassembly=# SELECT name, age FROM students ORDER BY age;
@@ -306,7 +328,7 @@ generalassembly=# SELECT name, age FROM students ORDER BY age;
 
 Done!
 
-- How about reversed?
+How about reversed?
 
 ```psql
 generalassembly=# SELECT name, age FROM students ORDER BY age DESC;
@@ -323,7 +345,7 @@ generalassembly=# SELECT name, age FROM students ORDER BY age DESC;
 
 Done!
 
-- How about those students who live in area code `910`?
+How about those students who live in area code `910`?
 
 ```psql
 generalassembly=# SELECT * FROM students WHERE mobile LIKE '%Fivetowns%';
@@ -336,6 +358,8 @@ generalassembly=# SELECT * FROM students WHERE mobile LIKE '%Fivetowns%';
 
 We can find strings within strings, too!
 
+------
+
 ## Code-Along: Updates to Our Database (10 min)
 
 OK, there are some mistakes we've made to our database, but that's cool, because we can update it or delete information we don't like. Let's start by adding one more student:
@@ -344,9 +368,10 @@ OK, there are some mistakes we've made to our database, but that's cool, because
 generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Miss Take', 500, 'asdfasdfasdf');
 INSERT 0 1
 ```
+
 ### Update 
 
-But, oh no, we messed them up! Miss Take cannot possbily have this number asdfasdfasdf; her number instead is 000-000-0000 . Let's fix it:  
+But, oh no, we messed them up! Miss Take cannot possbily have the number asdfasdfasdf; her number instead is 000-000-0000 . Let's fix it:  
 
 ```psql
 UPDATE students
@@ -379,8 +404,9 @@ generalassembly=# SELECT * FROM students;
           5 | Jackie Lackie    | 101 | 910-456-7890
           6 | Slaggy McRaggy   |  28 | 
 (6 rows)
-
 ```
+
+------
 
 ## Independent Practice: SQL Challenges (15 min)
 
@@ -397,6 +423,8 @@ There's _no way_ you're going to remember the exact syntax of everything we just
 - Get a list of names and mobiles for students who are older than 30, then order them by their names alphabetically.
 - Get a list of students whose first name begins with the letter "J."
 - Get a list of student names whose numbers are not listed.
+
+-----
 
 ## Conclusion (5 min)
 
@@ -415,3 +443,4 @@ To wrap up, answer these questions:
 
 - How does SQL relate to relational databases?
 - What kinds of Boolean and conditional operators can we use in SQL?
+
