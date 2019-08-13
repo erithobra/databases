@@ -14,7 +14,7 @@ Author:
 
 And that's why it's called "Entity" "Relationship" diagram (ERD)!
 
-We'll use crow's foot notation to create entity relationship diagrams (ERDs) that represent relational database models
+We'll use crow's foot notation to create entity relationship diagrams (ERDs) that represent relational database models.
 
 ### Let's Work on an Example Together 
 
@@ -27,9 +27,7 @@ Let's first list out all the entities we created:
 - Instructor
 - Course
 
-Now we'll go over how we created the ERD given below.
-
-You can use ERD Cardinality for reference.
+We can use ERD Cardinality for reference.
 
 ![](./images/erd_cardinality.png)
 
