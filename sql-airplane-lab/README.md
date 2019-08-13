@@ -1,4 +1,11 @@
-# Lab - Postgres
+--
+title: Flying with SQL
+type: lab
+duration: "1:00"
+creator: Isha Arora
+---
+
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Flying with SQL 
 
 ## Setup
 
@@ -44,11 +51,11 @@
   );
   ```
 
-1. You can check if above tables are created by running command `\dt` in your psql shell. 
+You can check if above tables are created by running command `\dt` in your psql shell. 
 
-2. Clone this repo and copy [airlines.csv](airlines.csv),  [airports.csv](airports.csv),  and [routes.csv](routes.csv) to your Desktop directory on your computer.
+Clone this repo and copy [airlines.csv](airlines.csv), [airports.csv](airports.csv), and [routes.csv](routes.csv) to your Desktop directory on your computer.
 
-1. Run the following code, substituting your computer's username for mine.  If you're unsure of the full path, `cd` to your Desktop and `pwd`.
+Run the following code, substituting your computer's username for mine. If you're unsure of the full path, `cd` to your Desktop and `pwd`.
 
   ```sql
   COPY routes FROM '/Users/<your-username>/Desktop/routes.csv' DELIMITER ',' CSV;
@@ -56,7 +63,7 @@
   COPY airlines FROM '/Users/<your-username>/Desktop/airlines.csv' DELIMITER ',' CSV;
   ```
 
-1. You should now have seeded three tables with flight data. Run `SELECT * FROM <table-name> LIMIT 10;` to confirm.
+You should now have seeded three tables with flight data. Run `SELECT * FROM <table-name> LIMIT 10;` to confirm.
 
 ## Goal
 
@@ -68,6 +75,6 @@
 
 ## Bonus
 
-If you want to practice writing SQL queries more. Create an account on hackerrank.com and follow this link- 
+If you want to practice writing SQL queries more, create an account on hackerrank.com and follow [this link](https://www.hackerrank.com/domains/sql?badge_type=sql&filters%5Bdifficulty%5D%5B%5D=easy&filters%5Bsubdomains%5D%5B%5D=select).
 
-https://www.hackerrank.com/domains/sql?badge_type=sql&filters%5Bdifficulty%5D%5B%5D=easy&filters%5Bsubdomains%5D%5B%5D=select 
+
