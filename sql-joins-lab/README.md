@@ -1,18 +1,16 @@
 ---
 title: SQL JOINs
 type: Lab
-duration: "1:30"
+duration: "2:00"
 creator:
     name: Yuliya Kaleda (and Alex De Marco)
-    city: NYC
-    
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SQL JOINs Lab
 
 ## Introduction
 
-> **Instructor Note:** This should be done independently.
+> This should be done independently.
 
 In this lab, you'll write SQL scripts for PostgreSQL that will create and initialize a database with two tables (`Employee` and `Job`) and then query the data in those tables. 
 
@@ -34,6 +32,7 @@ The main purpose of our scripts is to query information from both tables:
 2.  Show the companies located in Boston.  
 3.  Show the full name of the employee with the highest salary.  
 
+-------
 
 ## Exercise
 
