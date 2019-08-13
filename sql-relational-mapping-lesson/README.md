@@ -241,3 +241,5 @@ Foreign-key constraints:
 
 #### You Do
 The stage is set, you have courses you can offer; you have instructors ready to teach them; you also have interested students. Now is the time we start making some money. Using the join table table we just created, enroll students in the courses they are interested in.
+
+Make your Captain Barbossa gets at least few students enrolled in his course. Let us all strife for peace on campus.
