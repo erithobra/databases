@@ -1,37 +1,58 @@
 ---
 title: Relational Model
 type: Lesson
-duration: 2:00
+duration: "2:00"
 author: Isha Arora
 
 ---
 
-
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Relational Model
 
-Like we have discussed earlier, what makes SQL database relational is that each table is 'related' to other table in some way. This model organizes data into one or more tables (or "relations") of columns and rows, with a unique key identifying each row. Rows are also called records or tuples. Columns are also called attributes. 
+### Learning Objectives
 
+*After this lesson, students will be able to:*
+- Create a one-to-one, one-to-many, and many-to-many relationship in SQL.
+- Determine when each type of relationship is most useful for certain datasets.
 
-## Relational Mapping
+### Lesson Overview
+
+| TIMING  | TYPE  | TOPIC  |
+|:-:|---|---|
+| 10 min | Opening         | Discuss lesson objectives |
+| 30 min | Guided Practice | One to One |
+| 30 min | Guided Practice | One to Many |
+| 30 min | Guided Practice | Many to Many |
+| 10 min | Conclusion      | Review / Recap |
+
+## Introduction (10 min)
+
+Like we have discussed earlier, what makes SQL databases relational is that each table is 'related' to other table in some way. This model organizes data into one or more tables (or "relations") of columns and rows, with a unique key identifying each row. Rows are also called records or tuples. Columns are also called attributes. 
+
+### Relational Mapping
+
 Relationships happen when we start seeing multiple occurrences of duplicative information, or when one object needs to "connect" to another object.
 
-There are 3 ways how one table can be linked to another. Each is used in partcular scenarios. We will look at all 3 and their implementation one by one.
+There are three ways in which one table can be linked to another. Each is used in partcular scenarios. We will look at all 3 and their implementation one by one.
 
-### One to One
-- Not frequently used, but important to know it's an option.
-- In our previous lesson we were working on a `Student` table which had few attributes. Let's now say that each student should have an address attached to it.
-- In real-world applications `Address` is created to be a separate table linked to `Student`
-- Wwe say that each student can have only one address and each addess iis linked to a unique student. In such a case we say that `Student` and  `Address` have a one-to-one relationship.
+-----
+
+## One to One (30 min)
+
+The first way of linking tables is called a "one to one" relationship. It's not frequently used, but important to know it's an option.
+
+In our previous lesson, we were working on a `Student` table which had few attributes. Let's now say that each student should have an address attached to it.
+
+In real-world applications, `Address` is created to be a separate table linked to `Student`. We say that each student can have only one address and each addess is linked to a unique student. In such a case we say that `Student` and  `Address` have a one-to-one relationship.
 
 The example below shows a one-to-one relationship between Book and Author. Although realistically it's not possbile but we are saying that an Author can write only 1 Book and a book can only be written by 1 author.
 
 ![](https://www.tech-recipes.com/wp-content/uploads/2015/09/One-To-Many_Relationship_SQL_Server.png)
 
-### Code Along:
+### Code Along
 
 We will now see how this relationship is implemented in SQL.
 
-Let's first create `Addrss` table with few newcwssary attributes.
+Let's first create `Addrss` table with few necessary attributes.
 
 ```
 CREATE TABLE address (
@@ -42,11 +63,12 @@ CREATE TABLE address (
 );
 ```
 
-Now to create a relationship between these two tables we will first have to add a new column in the `Students` table whici will eventually store reference to `Address` record for that student. We will use `ALTER` to add a new column. `ALTER` keyword is used to change the description of the existing table. Our query will look like,
+Now, to create a relationship between these two tables, we will first have to add a new column in the `Students` table which will eventually store reference to `Address` record for that student. We will use `ALTER` to add a new column. `ALTER` keyword is used to change the description of the existing table. Our query will look like,
 
 ```
 ALTER TABLE students ADD COLUMN student_address_id INT;
 ```
+
 Let's go over the query, we are adding a new column of Integer datatype, named `student_address_id` to our `students` table.
 
 Once the column is added we can now add a foreign key constraint on this column such that `student_address_id` in `students` table will have the reference to data in `Address` table.
@@ -86,7 +108,7 @@ Foreign-key constraints:
     "fk_students_address" FOREIGN KEY (student_address_id) REFERENCES address(address_id)
 ```
 
-#### You Do
+### You Do
 
 Add records in `address` table for each student you have in the `students` table. Then update `students` table to associate the address.
 
@@ -97,8 +119,9 @@ Add records in `address` table for each student you have in the `students` table
 - Jackie lives at 2 OldForThis Ct, Fivetowns, NY.
 - Slagathorn prefers not to share the address.
 
+------
 
-### One to many
+## One to Many (30 min)
 
 The [One-to-Many](https://www.tech-recipes.com/rx/56738/one-to-one-one-to-many-table-relationships-in-sql-server) relationship is defined as a relationship between two tables where a row from one table can have multiple matching rows in another table. This relationship can be created using Primary key-Foreign key relationship.	
 
@@ -117,7 +140,8 @@ CREATE TABLE courses (
 	course_name VARCHAR(100)
 );
 ```
-While we are at it let's put some data in it,
+
+While we are at it, let's put some data in it,
 
 ```
 INSERT INTO courses VALUES (DEFAULT, 'SEI', 'Software Engineering Immersive');
@@ -134,7 +158,7 @@ generalassembly=# SELECT * FROM courses;
 
 ```
 
-Now we say that each course can be taught by multiple instructors but one instructor at a time can teach only one course. Such that, there is a one-to-many relationship between course and instructors.
+Now we say that each course can be taught by multiple instructors but one instructor at a time can teach only one course. In this way, there is a one-to-many relationship between course and instructors.
 
 So now when we'll create `instructors` table we will also add a *referential integrity* to it, just like we did before. 
 
@@ -147,7 +171,9 @@ CREATE TABLE instructors (
 );
 ```
 
-We have created a new column `instructor_course_id` which is the foreign key referencing to `course_id`, primary key in `courses` table. An instructor should always be teaching a course that's why we have put a not null constraint. But what if an instructor at the momment is not taking any courses or is on hiatus what do we do then. One option is to delete the record which is definitely not the best option. The better option is to set default value to `0`. Now we will know total number of instrcutors we have and how many are teaching currently.
+We have created a new column `instructor_course_id` which is the foreign key referencing `course_id`, the primary key in `courses` table. An instructor should always be teaching a course; that's why we have put a not null constraint. 
+
+But what if an instructor at the moment is not teaching any courses or is on hiatus - what do we do then? One option is to delete the record which is definitely not the best option. The better option is to set default value to `0`. Now we will know total number of instrcutors we have and how many are teaching currently.
 
 ```
 generalassembly=# \d instructors
@@ -165,15 +191,19 @@ Foreign-key constraints:
 
 ```
 
-#### You Do:
+### You Do
 
-You have the tables ready, relationship created, now have some fun with the data. Add some new instructors in the `instructors` table, try to match them up with the courses they feel comfortable teaching.
+You have the tables ready and the relationships created, so now you can have some fun with the data!
 
-Oh! I almost forgot, Captain Barbossa no longer wants to be a student. He is insisting(not so nicely) to be an instructor of a new course *How to be a Pirate*. I would suggest we give in to his demands.
+Add some new instructors in the `instructors` table, try to match them up with the courses they feel comfortable teaching.
+
+Oh! I almost forgot, Captain Barbossa no longer wants to be a student. He is insisting (not so nicely) to be an instructor of a new course *How to be a Pirate*. I would suggest we give in to his demands.
 
 ![](https://i.pinimg.com/originals/88/54/51/8854517cf5fac7e61bfb6d69eebae510.gif)
 
-### Many to Many
+------
+
+## Many to Many (30 min)
 
 Let's think about a high school situation where students have many courses and courses have many students. 
 
@@ -185,21 +215,21 @@ But then we are again putting arbitrary amounts of columns in our tables and the
 
 Fortunately the eggheads of computer science yesteryear have come up with a beautiful, elegant solution: The join table. 
 
-#### The Join Table!
+### The Join Table
 
 ![](https://media.giphy.com/media/jDiUeDQpIkGIM/giphy.gif)
 
 ![](https://smehrozalam.files.wordpress.com/2010/06/erd-many-to-many-2.jpg)
 
-We use a join table! It's a table with the ID's of BOTH, thus connecting our data across databases! YAY!!!!
+We use a join table! It's a table with the IDs of BOTH, thus connecting our data across databases! YAY!!!!
 
 A join table might be JUST a join table, meaning it might have nothing but the two IDs, or it might represent something too! 
 
-For example, the join table above represents a real thing: **enrollment**! Enrollment might have some of it's own properties, like start and stop dates. Other times, the join table might not really represent anything that has a real life analogy, and it might not need to hold any data besides the ID's. 
+For example, the join table above represents a real thing: **enrollment**! Enrollment might have some of its own properties, like start and stop dates. Other times, the join table might not really represent anything that has a real life analogy, and it might not need to hold any data besides the ID's. 
 
 ### Code Along
 
-We have already have `students` and `courses` tables in our database. we just have to create a join table signifying the enrollment, just like we have discussed in the example above. For now we will keep things really simple and just have a column for student id and course id. 
+We have already have `students` and `courses` tables in our database. We just have to create a join table signifying the enrollment, just like we have discussed in the example above. For now we will keep things really simple and just have a column for student ID and course ID. 
 
 Let's create our join table. We will call it `student_course` table.
 
@@ -216,11 +246,11 @@ There is a lot happening in this create table query, let's go over it one by one
 
 First, we are creating a join table with a primary key... `CREATE TABLE student_course_enrollment ( enrollment_id SERIAL PRIMARY KEY,`
 
-...then we are adding a not null constraint on both our foreign keys, a student should not be able to enroll without a course and vice versa `student_id INT REFERENCES students(student_id) NOT NULL, course_id INT REFERENCES courses(course_id) NOT NULL,`
+Then we are adding a not null constraint on both our foreign keys, a student should not be able to enroll without a course and vice versa `student_id INT REFERENCES students(student_id) NOT NULL, course_id INT REFERENCES courses(course_id) NOT NULL,`
 
 Finally, we want that a student should only enroll in a course once, that's why we made the combination of both `student_id` and `course_id` unique `UNIQUE (student_id, course_id)`
 
-Now if you describe your table you can see all the above constraints,
+Now if you describe your table you can see all the above constraints.
 
 ```
 generalassembly=# \d student_course_enrollment
@@ -236,10 +266,23 @@ Indexes:
 Foreign-key constraints:
     "student_course_enrollment_course_id_fkey" FOREIGN KEY (course_id) REFERENCES courses(course_id)
     "student_course_enrollment_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
-
 ```
 
-#### You Do
+### You Do
+
 The stage is set, you have courses you can offer; you have instructors ready to teach them; you also have interested students. Now is the time we start making some money. Using the join table table we just created, enroll students in the courses they are interested in.
 
-Make your Captain Barbossa gets at least few students enrolled in his course. Let us all strife for peace on campus.
+Make sure your Captain Barbossa gets at least few students enrolled in his course. Let us all strive for peace on campus.
+
+-----
+
+## Conclusion (10 min)
+
+Your instructors are happy, your students are happy, and most importantly, your pirates are happy.
+
+To make sure YOU'RE happy with what you learned in this lesson, find a partner and take a few minutes to discuss the following questions:
+- When would you use a one-to-one relationship?
+- What about a one-to-many relationship?
+- And finally, when would you use a many-to-many relationship / join table?
+
+
