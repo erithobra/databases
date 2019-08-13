@@ -4,53 +4,49 @@ Type: Lab
 Duration: "1:00"
 Author:
     Name: Alex De Marco and Isha Arora
-    
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Relational Database Modeling
 
-## ERD (5 min)
-[Entity Relationship Diagram](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/), also known as ERD, ER Diagram or ER model, is a type of structural diagram for use in database design. An ERD contains different symbols and connectors that visualize two important information: The major entities within the system scope, and the inter-relationships among these entities.
+## Introduction
+
+[Entity Relationship Diagram](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/), also known as ERD, ER Diagram, or ER model, is a type of structural diagram for use in database design. An ERD contains different symbols and connectors that visualize two important information: The major entities within the system scope, and the inter-relationships among these entities.
 
 And that's why it's called "Entity" "Relationship" diagram (ERD)!
 
-We'll use crow's foot notation to create entity relationship diagrams (ERDs) that represent relational database models.
+We'll use crow's foot notation to create entity relationship diagrams (ERDs) that represent relational database models
 
-### Let's Work on an Example Together (10 min):
+### Let's Work on an Example Together 
 
 Together as a group we will create an ERD of the database we built yesterday for General Assembly. 
 
-Let's first list out all the entities we created,
+Let's first list out all the entities we created:
 
 - Student
 - Address
 - Instructor
 - Course
 
-Now we'll go over howwe created the ERD given below,
+Now we'll go over how we created the ERD given below.
 
-You can use ERD Caridality for reference.
+You can use ERD Cardinality for reference.
 
 ![](./images/erd_cardinality.png)
 
-## Lab: Practice Database Design (45 min)
+------
 
-You are tasked with drawing an ERD for a hypothetical application. Think about what models you would need and what tables you'd create, including the associated attributes and how they might relate to other tables.
+## Lab: Practice Database Design
 
-Over the next 45 minutes, break into groups of three and work together to draw out diagrams for one of the apps below. You'll be drawing on the wall, so snap photos of the drawings when you're finished for safe keeping.
+Say you run a tire store. You have a spreadsheet of your tire inventory. You sell 16 different models of tires in different sizes from three vendors: Michelin, Bridgestone, and Pirelli. You have more than a thousand tires in your inventory. 
 
-Remember to consider all different angles in each of these examples. What job relationships exist? What people are there? What objects and intangible ideas are necessary? How would you organize it?
-
-### Exercise
-
-Say you run a tire store. You have a spreadsheet of your tire inventory. You sell 16 different models of tires in different sizes from three vendors: Michelin, Bridgestone, and Pirelli. You have more than a thousand tires in your inventory. You can get started with [this spreadsheet](Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
+You can get started with [this spreadsheet](Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
  
 Describe how you would convert your spreadsheet into a relational database model so that: 
 1. Vendor names `Michelin`, `Bridgestone`, and `Pirelli` are listed once, not repeated many times in many rows and tables.
 1. Tire models are listed once, not repeated many times in many tables.
-1. Tire size combinations (`width`, `aspect ratio`, `diameter`) should also only be in one table (not repeated many times). Hint: There are actually seven sizes in the spreadsheet.
+1. Tire size combinations (`width`, `aspect ratio`, `diameter`) should also only be in one table (not repeated many times). (Hint: There are actually seven sizes in the spreadsheet.(
 
-> Solution: 
+Solution: 
 > - One table called `Vendor` with three rows — one for each vendor.
 > - One table called `Model` with 16 rows — one for each model.
 > - One table called `Size` with seven rows — one for a tuple of (`width`, `aspect ratio`, `diameter`).
