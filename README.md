@@ -1,14 +1,14 @@
-# README
+## Recommended order
 
-Welcome to the Relational Databases unit of the course. 
-
-This unit is organized into 6 sections. 
-
-1. [Intro to Relational Databases](relational-databases-intro-lesson)
-1. [Relational Database Modeling](relational-database-modeling-lesson)
-1. [Intro to SQL](sql-intro-lesson)
-1. [SQL Joins](sql-joins-lesson)
-1. [JPA/Hibernate](jpa-hibernate-lesson)
-1. [Spring Boot and Relational Databases](spring-boot-relational-databases-lesson)
-
-
+Title | Type | Timing | Notes 
+----- | ---- | --     | -----
+[Intro to Relational Databases](./relational-databases-intro-lesson) | Lab / AM Exercise | 1:00 |
+[Intro to SQL](./sql-intro-lesson) | Lesson   | 2:00 |
+[Relational Mapping in SQL](./sql-relational-mapping-lesson) | Lesson | 2:00 |
+[SQL Basics Lab](./sql-intro-lab) | Lab / HW   | 2:00 | 
+[SQL Lab](./sql-airplane-lab)     | Lab / HW   | 1:00 | 
+[ACID Transactions](./acid-transactions) | Lab / AM Exercise   | 1:00 | 
+[Relational Database Modeling](./relational-database-modeling) | Lab / AM Exercise | 1:00 | 
+[Intro to SQL JOINS](./sql-joins-lesson) | Lesson | 2:00 |
+[SQL JOINS](./sql-joins-lab)  | Lab/ HW  | 2:00 |
+[Intro to MongoDB and NoSQL](./mongo-nosql-intro-lesson) | Lesson | 1:30 |
