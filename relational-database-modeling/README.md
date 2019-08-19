@@ -31,6 +31,10 @@ We can use ERD Cardinality for reference.
 
 ![](./images/erd_cardinality.png)
 
+Here's what it should look like in the end.
+
+![](./images/erd.png)
+
 ------
 
 ## Lab: Practice Database Design
