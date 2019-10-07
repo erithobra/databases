@@ -45,10 +45,10 @@ In our previous lesson, we were working on a `Students` table that had few attri
 
 In real-world applications, `Address` is created as a separate table linked to `Student`. We say that each student can have only one address and each address is linked to a unique student. In such a case, we say that `Student` and  `Address` have a one-to-one relationship.
 
-The example below shows a one-to-one relationship between `Book` and `Author`. In this scenario, we are saying that an `Author` can write only one `Book` and a `Book` can only be written by one `Author`.
+/*The example below shows a one-to-one relationship between `Book` and `Author`. In this scenario, we are saying that an `Author` can write only one `Book` and a `Book` can only be written by one `Author`.
 
 ![](https://www.tech-recipes.com/wp-content/uploads/2015/09/One-To-Many_Relationship_SQL_Server.png)
-
+*/
 ### Code-Along
 
 Next, we'll see how this relationship is implemented in SQL.
