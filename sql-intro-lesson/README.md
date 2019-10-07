@@ -61,17 +61,16 @@ All of these management systems use SQL (or some adaptation of it) as a language
 
 1.  Mac users, run the command `brew install postgres`
 2.  Let's install Postgres:
-
-	3.  [Post gres app](https://postgresapp.com/)
-	3.  Move the app to your `/Applications/` directory.
-	4.  Now, double-click it to run it.
-	5.  Select **Open Postgres** in the bottom-right corner.
+	a.  [Post gres app](https://postgresapp.com/)
+	b.  Move the app to your `/Applications/` directory.
+	c.  Now, double-click it to run it.
+	d.  Select **Open Postgres** in the bottom-right corner.
 			
 			OR
 			
-	1. Run `brew tap homebrew/services` to install brew services.
-	2. Then run `brew services start postgresql` to start postgres as a background service
-	3. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
+	a. Run `brew tap homebrew/services` to install brew services.
+	b. Then run `brew services start postgresql` to start postgres as a background service
+	c. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
 
 ------
 
