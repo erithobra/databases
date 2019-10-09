@@ -120,7 +120,7 @@ Add records in the `Address` table for each student in the `Students` table. The
 
 The [**one-to-many**](https://www.tech-recipes.com/rx/56738/one-to-one-one-to-many-table-relationships-in-sql-server) relationship is defined as a relationship between two tables where a row from one table can have multiple matching rows in another table. This relationship can be created using the primary key-foreign key relationship.	
 
-![](https://www.ntu.edu.sg/home/ehchua/programming/sql/images/ManyToOne.png)
+[//]: # ![](https://www.ntu.edu.sg/home/ehchua/programming/sql/images/ManyToOne.png)
 
 You simply put the ID of the "one" resource in the "many," as shown above. This is called a **foreign key**, because it is the key (or ID) of an item in a different table. 
 
