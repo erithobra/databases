@@ -46,7 +46,7 @@ The main purpose of our scripts is to query information from both tables:
 
 4. Create table `employees` where `ssn` is the primary key.
 
-5. Create table `jobs` such that `emp_ssn` is a foreign key referring to `employee` table column `ssn`
+5. Create table `jobs` such that `ssn` is a foreign key referring to `employee` table column `ssn`
 > What relationship do employees-jobs tables have? Look at the image to find your answer.
 6.  Add data to the tables using the csv files given in [starter-code](./starter-code)
 
