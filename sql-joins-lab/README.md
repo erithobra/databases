@@ -51,9 +51,9 @@ The main purpose of our scripts is to query information from both tables:
 6.  Add data to the tables using the csv files given in [starter-code](./starter-code)
 
 ```
-COPY employees FROM '/Users/<your-username>/Desktop/employees.csv' DELIMITER ',' CSV;
+COPY employees(ssn,first_name,last_name,year_of_birth,city) FROM '/Users/<your-username>/Desktop/employees.csv' DELIMITER ',' CSV HEADER;
 
-COPY jobs FROM '/Users/<your-username>/Desktop/jobs.csv' DELIMITER ',' CSV;
+COPY jobs(ssn,company,salary,experience) FROM '/Users/<your-username>/Desktop/jobs.csv' DELIMITER ',' CSV HEADER;
 ```
 
 Write select queries for each of the following:
