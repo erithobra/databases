@@ -61,11 +61,10 @@ All of these management systems use SQL (or some adaptation of it) as a language
 
 1.  Mac users, run the command `brew install postgres`
 2.  Let's install Postgres:
-
-	3.  [Post gres app](https://postgresapp.com/)
-	3.  Move the app to your `/Applications/` directory.
-	4.  Now, double-click it to run it.
-	5.  Select **Open Postgres** in the bottom-right corner.
+	1.  [Post gres app](https://postgresapp.com/)
+	2.  Move the app to your `/Applications/` directory.
+	3.  Now, double-click it to run it.
+	4.  Select **Open Postgres** in the bottom-right corner.
 			
 			OR
 			

@@ -1,7 +1,7 @@
 ---
 title: SQL JOINs
 type: Lab
-duration: "2:00"
+duration: "1:00"
 creator:
     name: Yuliya Kaleda (and Alex De Marco)
 ---
@@ -38,22 +38,31 @@ The main purpose of our scripts is to query information from both tables:
 
 ### Requirements
 
-An ``init_db.sh`` script should:  
-  1. Create the database. 
-  1. Create the tables.
-  1. Populate the tables.
+1. Connect to postgres `psql postgres`
 
-A ``run_queries.sh`` script should run three queries, one for each of the following:
+2. Create database company `CREATE DATABASE company`
+
+3. Connect to the newly creates database `\c company`
+
+4. Create table `employees` where `ssn` is the primary key.
+
+5. Create table `jobs` such that `ssn` is a foreign key referring to `employee` table column `ssn`
+> What relationship do employees-jobs tables have? Look at the image to find your answer.
+6.  Add data to the tables using the csv files given in [starter-code](./starter-code)
+
+```
+COPY employees(ssn,first_name,last_name,year_of_birth,city) FROM '/Users/<your-username>/Desktop/employees.csv' DELIMITER ',' CSV HEADER;
+
+COPY jobs(ssn,company,salary,experience) FROM '/Users/<your-username>/Desktop/jobs.csv' DELIMITER ',' CSV HEADER;
+```
+
+Write select queries for each of the following:
   1. **Employees working at Macy's**: The full names of employees working at Macy's.
   1. **Companies in Boston**: The companies located in Boston.
   1. **Employee with the highest salary**: The full name of the employee with the highest salary.
 
 > Note: Those two files can call other files if you'd like.
 
-### Starter Code
-
-Refer to [this lab's starter code](./starter-code), as well as the [SQL JOINs lesson starter code](../sql-joins-lesson/starter-code) to build your solution.
-
 ### Deliverable
 
-A pull request with all of your code for a working app that meets the requirements above.
+A pull request with a sql file that has all queries.

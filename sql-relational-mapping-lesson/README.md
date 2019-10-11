@@ -45,10 +45,6 @@ In our previous lesson, we were working on a `Students` table that had few attri
 
 In real-world applications, `Address` is created as a separate table linked to `Student`. We say that each student can have only one address and each address is linked to a unique student. In such a case, we say that `Student` and  `Address` have a one-to-one relationship.
 
-The example below shows a one-to-one relationship between `Book` and `Author`. In this scenario, we are saying that an `Author` can write only one `Book` and a `Book` can only be written by one `Author`.
-
-![](https://www.tech-recipes.com/wp-content/uploads/2015/09/One-To-Many_Relationship_SQL_Server.png)
-
 ### Code-Along
 
 Next, we'll see how this relationship is implemented in SQL.
@@ -124,7 +120,7 @@ Add records in the `Address` table for each student in the `Students` table. The
 
 The [**one-to-many**](https://www.tech-recipes.com/rx/56738/one-to-one-one-to-many-table-relationships-in-sql-server) relationship is defined as a relationship between two tables where a row from one table can have multiple matching rows in another table. This relationship can be created using the primary key-foreign key relationship.	
 
-![](https://www.ntu.edu.sg/home/ehchua/programming/sql/images/ManyToOne.png)
+<!--- ![](https://www.ntu.edu.sg/home/ehchua/programming/sql/images/ManyToOne.png) --->
 
 You simply put the ID of the "one" resource in the "many," as shown above. This is called a **foreign key**, because it is the key (or ID) of an item in a different table. 
 
