@@ -116,7 +116,7 @@ If you get a null response, let's use _Homebrew_ to install MongoDB:
 1. Update Homebrew's database (this might take a bit of time): `brew update`.
 2. Then install MongoDB:
 
- `brew install mongodb`
+ `brew install mongodb` or `brew cask install mongodb`
 
 3. By default, MongoDB will look for data in a folder named `/data/db`. We would have needed to create this folder, but Homebrew did it for us (hopefully).
    1. Run this command in your terminal:
