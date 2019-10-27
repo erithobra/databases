@@ -111,7 +111,7 @@ You may already have MongoDB installed on your system, so let's check in termina
 
 If you get `/usr/local/bin/mongod`, you're golden!
 
-If you get a null response, let's use _Homebrew_ to install MongoDB [Official intallation guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/):
+If you get a null response, let's use _Homebrew_ to install MongoDB [Official installation guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/):
 
 1. Update Homebrew's database (this might take a bit of time): 
 
