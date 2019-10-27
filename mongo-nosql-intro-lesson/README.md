@@ -117,11 +117,11 @@ If you get a null response, let's use _Homebrew_ to install MongoDB [Official in
 
 2. Access the `mongodb` tap: 
 
- `brew tap mongodb/brew`
+   `brew tap mongodb/brew`
 
 3. Then install MongoDB:
 
- `brew install mongodb-community@4.2`
+   `brew install mongodb-community@4.2`
 
 #### Start Your Engine
 
