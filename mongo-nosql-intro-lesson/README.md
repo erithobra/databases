@@ -113,7 +113,9 @@ If you get `/usr/local/bin/mongod`, you're golden!
 
 If you get a null response, let's use _Homebrew_ to install MongoDB [Official intallation guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/):
 
-1. Update Homebrew's database (this might take a bit of time): `brew update`.
+1. Update Homebrew's database (this might take a bit of time): 
+
+   `brew update`
 
 2. Access the `mongodb` tap: 
 
