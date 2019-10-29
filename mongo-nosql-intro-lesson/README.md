@@ -338,12 +338,6 @@ We can model data relationships using a __references__ approach, in which data i
 
 It may help to think of this approach as _linking_ documents together by including a reference to the related document's `_id` field.
 
-Let's create a new `bankAccounts` collection:
-
-```js
-> use bankAccounts
-```
-
 > **Note**: Use the idea that the person might have a _joint account_, which is owned by more than one person.
 
 For the sake of _data consistency_, keeping the account data in its own document would be a better design decision. In clearer terms, it would not be a good idea to store a bank account's balance in more than one place.
@@ -359,6 +353,8 @@ Let's first create a bank account:
   balance: 2000,
 })
 ```
+
+Running an action on a collection that doesn't exist, like with `bankAccounts` above, first creates that collection then executes the command.
 
 Now let's get that account's `_id`:
 
