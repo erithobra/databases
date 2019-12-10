@@ -111,25 +111,19 @@ You may already have MongoDB installed on your system, so let's check in termina
 
 If you get `/usr/local/bin/mongod`, you're golden!
 
-If you get a null response, let's use _Homebrew_ to install MongoDB:
+If you get a null response, let's use _Homebrew_ to install MongoDB [Official installation guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/):
 
-1. Update Homebrew's database (this might take a bit of time): `brew update`.
-2. Then install MongoDB:
+1. Update Homebrew's database (this might take a bit of time): 
 
- `brew install mongodb`
+   `brew update`
 
-3. By default, MongoDB will look for data in a folder named `/data/db`. We would have needed to create this folder, but Homebrew did it for us (hopefully).
-   1. Run this command in your terminal:
-```shell
-[ ! -d /data/db ] && sudo mkdir -p /data/db && sudo chown -R $(whoami) /data/db || ls -la /data
-```
-   2. You should get something like this:
-```shell
-total 0
-drwxr-xr-x   3 root       wheel   102 Nov 11 13:06 .
-drwxr-xr-x  38 root       wheel  1360 Nov 11 13:06 ..
-drwxr-xr-x   8 jseminara  wheel   272 Nov 11 13:10 db
-```
+2. Access the `mongodb` tap: 
+
+   `brew tap mongodb/brew`
+
+3. Then install MongoDB:
+
+   `brew install mongodb-community@4.2`
 
 #### Start Your Engine
 
@@ -138,6 +132,10 @@ drwxr-xr-x   8 jseminara  wheel   272 Nov 11 13:10 db
 To start the database engine, type `mongod` in terminal.
 
 Press `control+c` to stop the engine.
+
+To run MongoDB as a macOS service, issue the following (the process uses the /usr/local/etc/mongod.conf file created during the install):
+
+ `brew services start mongodb-community@4.2`
 
 #### Creating a Database and Inserting Documents
 
@@ -340,12 +338,6 @@ We can model data relationships using a __references__ approach, in which data i
 
 It may help to think of this approach as _linking_ documents together by including a reference to the related document's `_id` field.
 
-Let's create a new `bankAccounts` collection:
-
-```js
-> use bankAccounts
-```
-
 > **Note**: Use the idea that the person might have a _joint account_, which is owned by more than one person.
 
 For the sake of _data consistency_, keeping the account data in its own document would be a better design decision. In clearer terms, it would not be a good idea to store a bank account's balance in more than one place.
@@ -361,6 +353,8 @@ Let's first create a bank account:
   balance: 2000,
 })
 ```
+
+Running an action on a collection that doesn't exist, like with `bankAccounts` above, first creates that collection then executes the command.
 
 Now let's get that account's `_id`:
 
