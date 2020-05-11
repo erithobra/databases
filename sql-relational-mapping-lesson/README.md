@@ -56,15 +56,19 @@ CREATE TABLE address (
 	address_id SERIAL PRIMARY Key,
 	street VARCHAR(150),
 	city VARCHAR(50),
-	zip VARCHAR(50)
+	state VARCHAR(10)
 );
 ```
+>If you are using pgAdmin, create a new table using the GUI as shown in the previous lesson.
 
-Now, to create a relationship between these two tables, we'll have to add a new column in the `Students` table that will eventually store the reference to the `Address` record for that student. We'll use `ALTER` to add a new column; the `ALTER` keyword is used to change the description of the existing table. Our query will look like this:
+Now, to create a relationship between these two tables, we'll have to add a new column in the `Students` table that will eventually store the reference to the `Address` record for that student. 
+
+We'll use `ALTER` to add a new column; the `ALTER` keyword is used to change the description of the existing table. Our query will look like this:
 
 ```
 ALTER TABLE students ADD COLUMN student_address_id INT;
 ```
+>Again, if using pgAdmin, right-click on the Columns to create a new integer column named `student_address_id`.
 
 Let's go over the query. We're adding a new column of the integer data type, named `student_address_id`, to our `Students` table.
 
@@ -72,7 +76,18 @@ Once the column is added, we can add a foreign key constraint to this column so 
 
 A **foreign key** is a key used to link two tables together. It's a field (or collection of fields) in one table that refers to the primary key in another table.
 
-In our case, we'll again `ALTER` the `Students` table to create this constraint:
+In `pgAdmin`, we will right-click on the Constraints option under `students` table to create a new Foreign Key constraint.
+
+![](./images/create_fk.png)
+
+![](./images/create_fk_1.png)
+
+![](./images/create_fk_2.png)
+> Don't worry if this query looks little different from the one given below. pgAdmin gives us some extra options.
+
+**OR**
+
+In `cmd` prompt, we'll again `ALTER` the `Students` table to create this constraint:
 
 ```
 ALTER TABLE students 
@@ -165,6 +180,7 @@ CREATE TABLE instructors (
 	instructor_course_id INT REFERENCES courses(course_id) NOT NULL DEFAULT (0)
 );
 ```
+>In pgAdmin you can create it as part of creating the `instructors` table.
 
 We've created a new column, `instructor_course_id`, which is the foreign key referencing `course_id`, the primary key in the `Courses` table. An instructor should always be teaching a course; that's why we have put a `NOT NULL` constraint. 
 
@@ -226,7 +242,7 @@ For example, the JOIN table above represents a real thing: **enrollment**! Enrol
 
 We already have `Students` and `Courses` tables in our database. We just have to create a JOIN table signifying the enrollment, just as we discussed in the example above. For now, we'll keep things simple and just have a column for `student_id` and a column for `course_id`. 
 
-Let's create our JOIN table. We'll call it `student_course`:
+Let's create our JOIN table. We'll call it `student_course_enrollment`:
 
 ```
 CREATE TABLE student_course_enrollment (
@@ -262,6 +278,22 @@ Foreign-key constraints:
     "student_course_enrollment_course_id_fkey" FOREIGN KEY (course_id) REFERENCES courses(course_id)
     "student_course_enrollment_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
 ```
+
+**OR** 
+
+In `pgAdmin` adding join table will look like,
+
+![](./images/join_table.png)
+
+![](./images/jt_col.png)
+
+![](./images/jt_constraints.png)
+
+![](./images/jt_constraints_2.png)
+
+![](./images/jt_unique.png)
+
+![](./images/jt_sql.png)
 
 ### You Do
 
