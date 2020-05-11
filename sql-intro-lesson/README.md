@@ -59,49 +59,72 @@ All of these management systems use SQL (or some adaptation of it) as a language
 
 ## Installing Postgres (15 min)
 
-1.  Mac users, run the command `brew install postgres`
 2.  Let's install Postgres:
-	1.  [Post gres app](https://postgresapp.com/)
-	2.  Move the app to your `/Applications/` directory.
-	3.  Now, double-click it to run it.
-	4.  Select **Open Postgres** in the bottom-right corner.
-			
-			OR
-			
-	1. Run `brew tap homebrew/services` to install brew services.
-	2. Then run `brew services start postgresql` to start postgres as a background service
-	3. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
+	1.  [Postgres installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+	2.  Follow the steps to install Postgres
+	3.  Make sure to install `pgAdmin` which is installed as part of Postgres installer for Windows
+	4. Remember the username and password you set while installing Postgres. This will come in handy later.
+	4.  After installation is complete run pgAdmin from Windows. The username/password will be what you initially set while installing Postgres.
 
 ------
 
 ## Code-Along: Connect and Create a Database (15 min)
 
-Let's create a database! First thing's first, make sure you have PostgreSQL running. Once you do, open your terminal and type:
 
-```bash
-$ psql postgres
+### Connecting to Postgres
+
+There are 2 ways to connect to the Postgres database. Throughout the lesson I will show you both.
+
+We can either use [pgAdmin](https://www.pgadmin.org/) to access our database. `pgAdmin` gives users a GUI for Postgres. Anything you can do by running any query on Postgres, you can do it using this tool. 
+
+You will be asked to put in the password to connect to Postgres. Once you do, you will see a database `postgres` is already created.
+
+**OR**
+
+We can use `cmd` prompt in Windows to connect to Postgres. But before we do that we need to add Postgres to our PATH environment variable. The way to do that is [here](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+
+After PATH is updated. Open CMD prompt and type in,
+
 ```
+psql -U <username>
+```
+>This will be the username you had set while installing Postgres.
 
-You should see something like:
+You will be asked to put in the password. You should see something like:
 
-```bash
+```
 postgres=# 
 ```
 
-Great! Now, you can execute PSQL commands (or PostgreSQL's version of SQL).
+Great! Now, you can execute PSQL commands
 
-Let's use these commands but before we can, we must create a database. Let's call it `generalassembly`:
+### Creating a DB
+
+Let's create a database! 
+
+We will create a new database called `generalassembly` by right clicking on the `Databases` option.
+
+**OR**
+
+If you want to create a db using `cmd`, here is the query for it
 
 ```psql
-postgres=# CREATE DATABASE generalassembly;
-CREATE DATABASE
+CREATE DATABASE generalassembly;
 ```
 
 The semicolon is important! Be sure to always end your SQL queries and commands with semicolons.
 
-To remove a database run, `DROP DATABASE <databasename>;`. 
+### Dropping a DB
 
-Now let's _use_ that database we just created:
+When you drop a database, it is gone forever from the memory so make sure to use it with caution.
+
+To remove a database through `pgAdmin` right-click on the database and drop it 
+
+**OR**
+
+In `cmd` prompt run query, `DROP DATABASE <databasename>;`. 
+
+Now in `cmd` prompt let's _use_ that database we just created:
 
 ```psql
 postgres=# \c generalassembly
@@ -118,7 +141,7 @@ generalassembly=#
 
 To exit from postgres shell either type `exit` OR do `ctrl+d`.
 
-### SQL Style Guide 
+## SQL Style Guide 
 
 1. Fields should *always* be lower case.
 2. SQL _keywords_ should always be upper case. 
@@ -140,7 +163,22 @@ Let's create a table for students that collects information about:
 - Their age (cannot be left blank).
 - Their mobile.
 
-Here's how you create a table in SQL:
+In `pgAdmin` right click on `Tables` to create a new table `students`. 
+
+![](./images/create_table.png)
+
+Click on the Columns tab to add the columns one by one
+
+![](./images/add_columns.png)
+
+Under SQL tab you can see the SQL query pgAdmin will run to create your table.
+
+![](./images/create_table_query.png)
+> Note how similar it is to the create query given below
+
+**OR**
+
+Here's how you create a table in `cmd`:
 
 ```sql
 CREATE TABLE students (
@@ -199,7 +237,14 @@ Let's do it for Jack:
 INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999-999-9999');
 ```
 
-In PSQL, that will look like:
+In `pgAdmin` you will righ-click on the table name `students` and click on `Query Tool...`. This will open a tab on the window where you can run the above query.
+
+![](./images/insert_query.png)
+
+*OR**
+
+
+In `cmd`, that will look like:
 
 ```psql
 generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999-999-9999');
@@ -261,6 +306,12 @@ We can pass in the columns we want to look at (such as above), or even get all o
 SELECT * FROM table_name;
 ```
 
+In `pgAdmin` run the select query in the query tool,
+
+![](./images/select_query.png)
+
+**OR**
+
 For example, we can get all of the records back:
 
 ```psql
@@ -290,6 +341,9 @@ generalassembly=# SELECT name, age FROM students;
  Slaggy McRaggy   |  28
 (6 rows)
 ```
+
+From this point on you will continue to use query tool in `pgAdmin` to get better practice on SQL query syntax.
+
 
 ### Getting More Specific: WHERE Clause
 
