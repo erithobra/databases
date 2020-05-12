@@ -9,7 +9,12 @@ creator: Isha Arora
 
 ## Set Up
 
-1. Create a new database called `flights`, connect to it, and run the following code:
+1. Create a new database called `flights`, connect to it 
+```
+\c flights
+```
+
+and run the following code:
 
   ```sql
   CREATE TABLE airlines (
@@ -58,9 +63,9 @@ Clone this repo and copy [`airlines.csv`](airlines.csv), [`airports.csv`](airpor
 Run the following code, substituting your computer's username for mine. If you're unsure of the full path, `cd` to your `Desktop` and `pwd`:
 
   ```sql
-  COPY routes FROM '/Users/<your-username>/Desktop/routes.csv' DELIMITER ',' CSV;
-  COPY airports FROM '/Users/<your-username>/Desktop/airports.csv' DELIMITER ',' CSV;
-  COPY airlines FROM '/Users/<your-username>/Desktop/airlines.csv' DELIMITER ',' CSV;
+  \copy routes FROM '/Users/<your-username>/Desktop/routes.csv' DELIMITER ',' CSV;
+  \copy airports FROM '/Users/<your-username>/Desktop/airports.csv' DELIMITER ',' CSV;
+  \copy airlines FROM '/Users/<your-username>/Desktop/airlines.csv' DELIMITER ',' CSV;
   ```
 
 You should have now seeded three tables with flight data. Run `SELECT * FROM <table-name> LIMIT 10;` to confirm.
