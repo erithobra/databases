@@ -4,13 +4,13 @@
 
 ### start postgres
 ```sh
-pg_ctl -D /usr/local/var/postgres start
+psql -U <postgres-username>
 ```
 
 ### create database
 
 ```sh
-psql -c 'CREATE DATABASE company;'
+CREATE DATABASE company;
 ```
 
 ### drop database
@@ -19,9 +19,9 @@ psql -c 'CREATE DATABASE company;'
 psql -c 'DROP DATABASE company;'
 ```
 
-### initialize the database structure
+### connect to the database
 ```sh
-psql -d company -f init_db.sql
+\c company
 ```
 
 ### insert data into the database
