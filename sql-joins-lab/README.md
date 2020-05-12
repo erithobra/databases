@@ -40,9 +40,9 @@ The main purpose of our scripts is to query information from both tables:
 
 1. Connect to postgres `psql postgres`
 
-2. Create database company `CREATE DATABASE company`
+2. Create database company `CREATE DATABASE joins`
 
-3. Connect to the newly creates database `\c company`
+3. Connect to the newly creates database `\c joins`
 
 4. Create table `employees` where `ssn` is the primary key.
 
@@ -51,9 +51,9 @@ The main purpose of our scripts is to query information from both tables:
 6.  Add data to the tables using the csv files given in [starter-code](./starter-code)
 
 ```
-COPY employees(ssn,first_name,last_name,year_of_birth,city) FROM '/Users/<your-username>/Desktop/employees.csv' DELIMITER ',' CSV HEADER;
+\copy employees(ssn,first_name,last_name,year_of_birth,city) FROM '<path-to-dir>/databases/sql-joins-lab/starter-code/employees.csv' DELIMITER ',' CSV HEADER;
 
-COPY jobs(ssn,company,salary,experience) FROM '/Users/<your-username>/Desktop/jobs.csv' DELIMITER ',' CSV HEADER;
+\copy jobs(ssn,company,salary,experience) FROM '<path-to-dir>/databases/sql-joins-lab/starter-code/jobs.csv' DELIMITER ',' CSV HEADER;
 ```
 
 Write select queries for each of the following:
