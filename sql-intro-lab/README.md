@@ -19,7 +19,7 @@ We're going to use what we've already learned about searching with SQL commands 
 
 #### Requirements
 
-- Fork and clone the [starter code](starter-code/world.sql).
+- Fork and clone the [starter code](./starter-code).
 - Use the `clues.sql` file as your "answer sheet."
 - From the command line, let's create a new database called `carmen` and populate it with the SQL found in `world.sql`.
 
@@ -38,7 +38,7 @@ CREATE DATABASE carmen;
 **Pro tip:** You can do this in one step with the command:
 
 ```bash
-psql -d carmen -f /your/path/to/this/file/starter-code/world.sql
+psql -U <postgres-username> -d carmen -f /your/path/to/this/file/starter-code/world.sql
 ```
 
 After that, use the clues below to create the appropriate SQL queries to help you find Carmen. Tell us where she's heading!
