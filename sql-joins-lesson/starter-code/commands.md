@@ -13,38 +13,38 @@ psql -U <postgres-username>
 CREATE DATABASE company;
 ```
 
-### drop database
-
-```sh
-psql -c 'DROP DATABASE company;'
-```
-
 ### connect to the database
 ```sh
 \c company
 ```
 
-### insert data into the database
+### create table in the database
+
+```
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(255),
+    age INT,
+    address VARCHAR(255),
+    salary INT,
+    UNIQUE(name,age,address)
+);
+
+CREATE TABLE departments (
+    id SERIAL PRIMARY KEY NOT NULL,
+    dept VARCHAR(255),
+    emp_id SERIAL NOT NULL,
+    FOREIGN KEY (emp_id) REFERENCES employees(id)
+);
+```
+
+### insert data into the database 
+
 ```sh
-psql -d company -f insert_data.sql
-```
+\copy employees(name,age,address,salary) FROM '<path-to-dir>/databases/sql-joins-lesson/starter-code/employees.csv' DELIMITER ',' CSV HEADER;
 
-### delete data from the database
-```sh
-psql -d company -c "truncate table employees cascade;"
+\copy departments(dept,emp_id) FROM '<path-to-dir>/databases/sql-joins-lesson/starter-code/departments.csv' DELIMITER ',' CSV HEADER;
 ```
-
-### insert data into the datavase (alternative without hardcoded full path)
-```sh
-psql -d company -c "COPY employees(name,age,address,salary) FROM '`pwd`/employees.csv' DELIMITER ',' CSV HEADER";
-psql -d company -c "COPY departments(dept_name,emp_id) FROM '`pwd`/departments.csv' DELIMITER ',' CSV HEADER";
-```
-
-### stop postgres
-```sh 
-pg_ctl -D /usr/local/var/postgres start
-```
-
 
 ## Postgres (psql client)
 
