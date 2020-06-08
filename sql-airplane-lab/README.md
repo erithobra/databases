@@ -68,6 +68,8 @@ Run the following code, substituting your computer's username for mine. If you'r
   \copy airlines FROM '/Users/<your-username>/Desktop/airlines.csv' DELIMITER ',' CSV;
   ```
 
+> If you get "Permission denied" error, copy csv files to `C:\Windows\Temp` folder and then run the above command again with updated path `\copy routes FROM 'C:\Windows\Temp\routes.csv' DELIMITER ',' CSV;`
+
 You should have now seeded three tables with flight data. Run `SELECT * FROM <table-name> LIMIT 10;` to confirm.
 
 ## Goal
