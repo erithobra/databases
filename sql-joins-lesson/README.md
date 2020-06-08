@@ -142,7 +142,7 @@ The returned data includes information about `EMP_ID`, `NAME`, and `DEPT`.
 
 ------
 
-## Guided Practice: Inner JOINs in Java (30 min)
+## Guided Practice: Inner JOINs (30 min)
 
 Import the project [starter code](starter-code). Use commands in [`commands.md`](commands.md) to create a database called `COMPANY`, along with the database tables, and then insert data. 
 
@@ -163,7 +163,7 @@ In our examples, we can see that the second entry in the `EMPLOYEES` table is as
 
 -------
 
-## Independent Practice: Inner JOINs in Java (30 min)
+## Independent Practice: Inner JOINs (30 min)
 
 Using the app above, create a query that will not only return the name of the person but will also provide the information about the employee's age, address, salary, and department (whether or not they have been assigned a department) for employees making more than $15,000.
 
