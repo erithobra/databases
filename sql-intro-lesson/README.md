@@ -29,6 +29,48 @@ creator:
 | 15 min | Independent Practice | SQL Challenges |
 | 5 min  | Conclusion      | Review / Recap |
 
+## Overview (5 min)
+
+**Relational databases** are a way of storing and retrieving data on disk (or many disks). They provide more powerful storage and retrieval capabilities than simple files and are used in banking, eCommerce, healthcare, and all kinds of web and enterprise applications. 
+
+Knowing the basics of how they work and how to use them (with SQL) allows us to build “full-stack” applications that include business logic (Java back-end), a UI (HTML/CSS/JS front-end), plus permanent storage in a database.
+
+--------
+
+## Intro: What Are Databases? (15 min)
+
+A **database** is a place where information is stored in a hard drive (or distributed across multiple hard drives) somewhere on a computer. Much as we've been creating and storing data here and there, a database represents a collection of individual pieces of data stored in a highly structured and searchable way; they represent a model of reality, which is why we call them models in MVC.
+
+Inside a database, we carry out basic actions such as **c**reating, **r**eading, **u**pdating, and **d**eleting data (or CRUD)!
+
+In modern web development, there are different categories of databases: relational (aka, SQL), NoSQL, key-value, and more. We're focusing on relational databases here.
+
+SQL stands for **Structured Query Language**, and it's a language used to manage and get information from what are considered "relational" databases (we'll talk more about SQL in the next lesson).
+
+We call these databases "relational" because different models (or pieces of data) can be linked to other models — i.e., "related." 
+
+Relational databases store data in a **table**; think of it like a spreadsheet. The table holds all of the data for one model, while the columns define the model's attributes; we often call columns "attributes" or "fields." A row is an instance (remember instantiation!); think of it as a unique copy of the blueprint that is our model (often called a "record").
+
+![relational db](https://cloud.githubusercontent.com/assets/25366/8589355/2646c588-25ca-11e5-9f2d-3d3afe8b7817.png)
+
+-----
+
+## We Do: Let's Draw some tables
+
+In this exercise, we'll explain the basic idea around taking a real-world data problem and organizing a solution in tables and relationships between tables.
+
+Let's say we're building an app for a library. Consider what some tables would look like (e.g., what information or attributes would be associated with each table).
+
+> **Instructor Note**: Maybe call on random students to come up to the board to draw different tables with rows and columns. If we secretly guide them toward building individual models that should be related, we can naturally draw connections between those models to show relationships.
+
+- What would the table for a book look like?
+- What would the table for an author look like?
+- What would the table for a category look like?
+
+This is when we start seeing relationships form. This is great! You can imagine duplicate pieces of data being stored naturally, especially when an author has multiple books (for instance). That's a waste of space! We'll later talk about how we can connect these tables so we don't have tons of duplicate data all over the place.
+
+------
+
 ## Intro: We Know About Databases, But What Is SQL? (10 min)
 
 Let's review: At its simplest, a **relational database** is a mechanism for storing and retrieving data in a tabular form. But, how do we interact with our database (inserting, updating, retrieving, and deleting data)? That's where SQL comes in!
