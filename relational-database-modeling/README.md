@@ -41,7 +41,7 @@ Here's what it should look like in the end.
 
 Say you run a tire store. You have a spreadsheet of your tire inventory. You sell 16 different models of tires in different sizes from three vendors: Michelin, Bridgestone, and Pirelli. You have more than a thousand tires in your inventory. 
 
-You can get started with [this spreadsheet](Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
+You can get started with [this spreadsheet](./Tire-Store.xlsx). Note that tire sizes are always listed as a combination of `width`, `aspect ratio`, and `diameter`.
  
 Describe how you would convert your spreadsheet into a relational database model so that: 
 1. Vendor names `Michelin`, `Bridgestone`, and `Pirelli` are listed once, not repeated many times in many rows and tables.
