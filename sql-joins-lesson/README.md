@@ -102,7 +102,66 @@ SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expressio
 
 ## Demo: Inner JOINs (20 min)
 
-Let's consider two tables, `EMPLOYEES` and `DEPARTMENTS`:   
+We will use the `generalassembly` database that we worked on yesterday. 
+
+Take the two tables we created yesterday.
+
+`STUDENTS`
+
+```
+generalassembly=# SELECT * FROM students; student_id |      name      | age |    mobile    | students_address_id------------+----------------+-----+--------------+---------------------          6 | Slaggy McRaggy |  28 |              |          1 | Jack Sparrow   |  43 | 999-999-9999 |                   1          2 | Jilly Cakes    |  30 | 910-111-1111 |                   2          3 | Johnny Bananas |  25 | 678-111-1234 |                   3          5 | Jackie Lackie  | 101 | 910-456-7890 |                   4(5 rows)
+```
+
+`ADDRESS`
+
+```
+generalassembly=# SELECT * FROM address; address_id |     street      |    city     | state------------+-----------------+-------------+--------          1 | sesame street   | Sesame City | Sesame          2 | 123 Webdev Dr.  | Boston      | MA          3 | 555 Five St     | Fivetowns   | NY          4 | 2 OldForThis Ct | Fivetowns   | NY(4 rows)
+```
+
+Let's say we want to find out the name of the students and which city and state each student lives in.
+
+```
+SELECT name, city, state 
+FROM students 
+INNER JOIN address 
+ON students_address_id = address_id;
+```
+
+> **Knowledge Check**: Take a minute and predict the results of the query with the person next to you.
+
+The query will produce the following result:
+
+```
+generalassembly=# SELECT name, city, state FROM students INNER JOIN address ON students_address_id = address_id;      name      |    city     | state----------------+-------------+-------- Jack Sparrow   | Sesame City | Sesame Jilly Cakes    | Boston      | MA Johnny Bananas | Fivetowns   | NY Jackie Lackie  | Fivetowns   | NY(4 rows)
+```
+
+As we can see from the query, we compare the tables based on one column in each:
+
+* `students_address_id` in the `students` table.  
+* `address_id` in the `address` table.  
+
+The returned data includes information about `name`, `city`, and `state`.
+
+### Using `WHERE` clause with INNER joins.
+
+Find all the students that live in 'NY' state.
+	
+```
+SELECT name, city, state 
+FROM students 
+INNER JOIN address 
+ON students_address_id = address_id 
+WHERE state = 'NY';
+```
+	
+The result will be,
+	
+```
+   		name      |   city    | state----------------+-----------+------- Johnny Bananas | Fivetowns | NY Jackie Lackie  | Fivetowns | NY(2 rows)
+```
+
+
+<!--Let's consider two tables, `EMPLOYEES` and `DEPARTMENTS`:   
 
 `EMPLOYEES`:
 
@@ -138,13 +197,67 @@ As we can see from the query, we compare the tables based on one column in each:
 * `ID` in the `EMPLOYEES` table.  
 * `EMP_ID` in the `DEPARTMENTS` table.  
 
-The returned data includes information about `EMP_ID`, `NAME`, and `DEPT`.
+The returned data includes information about `EMP_ID`, `NAME`, and `DEPT`.-->
 
 ------
 
-## Guided Practice: Inner JOINs (30 min)
+## Independent Practice: Inner JOINs
 
-Import the project [starter code](starter-code). Use commands in [`commands.md`](commands.md) to create a database called `COMPANY`, along with the database tables, and then insert data. 
+Now you ll use inner joins to query `courses` and `instructors` tables. The data in both the tables is,
+
+`COURSES`
+
+```
+generalassembly=# SELECT * FROM courses; course_id | course_code |      course_name-----------+-------------+-----------------------         1 | CNT         | Counting         2 | HTS         | How To Be a Superhero         3 | HTP         | How To Be a Pirate(3 rows)
+```
+
+`INSTRUCTOTS`
+
+```
+generalassembly=# SELECT * FROM instructors; instructor_id |      name       |       email        | instructor_course_id---------------+-----------------+--------------------+----------------------             1 | Asheley         | email              |                    2             2 | Captain Barbosa | barbosa@pirate.com |                    3             3 | Davy Jones      | jones@pirate.com   |                    3(3 rows)
+```
+
+1. Let's write a query that returns the `name` and `email` of all the instructors that are teaching `How To Be a Pirate` course.
+2. Conversely, we also want to find out the name of the course that `Asheley` is teaching.
+
+<details><summary>Query 1</summary>
+
+```
+SELECT name 
+FROM instructors 
+INNER JOIN courses 
+ON course_id = instructor_course_id 
+WHERE course_name = 'How To Be a Pirate';
+```
+
+The output will be,
+
+```
+      name----------------- Captain Barbosa Davy Jones(2 rows)
+```
+
+</details>
+
+
+<details><summary>Query 2</summary>
+
+```
+SELECT course_name 
+FROM instructors 
+INNER JOIN courses 
+ON course_id = instructor_course_id 
+WHERE name = 'Asheley';
+```
+
+Output, 
+
+```
+      course_name----------------------- How To Be a Superhero(1 row)
+```
+
+</details>
+
+<!--Import the project [starter code](starter-code). Use commands in [`commands.md`](commands.md) to create a database called `COMPANY`, along with the database tables, and then insert data. 
 
 If we were writing plain SQL, our query asking for the name of the person would look like this:
 
@@ -159,13 +272,46 @@ As mentioned above, we compare two tables on the following columns:
 
 > Take two minutes to figure out what the query should return.
 
-In our examples, we can see that the second entry in the `EMPLOYEES` table is associated with the name `Allen`, and the table has an `ID` column that gets auto-incremented every time we add a new entry. In the `DEPARTMENTS` table, the second row has `EMP_ID` equal `2`. The same happens with the `EMP_ID` of `7`. Thus, the names `Paul`, `Allen`, and `James` are returned.
+In our examples, we can see that the second entry in the `EMPLOYEES` table is associated with the name `Allen`, and the table has an `ID` column that gets auto-incremented every time we add a new entry. In the `DEPARTMENTS` table, the second row has `EMP_ID` equal `2`. The same happens with the `EMP_ID` of `7`. Thus, the names `Paul`, `Allen`, and `James` are returned.-->
 
 -------
 
-## Independent Practice: Inner JOINs (30 min)
+## Bonus: Inner JOIN with 3 Tables (30 min)
 
-Using the app above, create a query that will not only return the name of the person but will also provide the information about the employee's age, address, salary, and department (whether or not they have been assigned a department) for employees making more than $15,000.
+We will now focus on using joins with the JOIN table `student_course_enrollment`. Let's look at the data in the tables.
+
+`STUDENTS`
+
+```
+generalassembly=# SELECT * FROM students; student_id |      name      | age |    mobile    | students_address_id------------+----------------+-----+--------------+---------------------          6 | Slaggy McRaggy |  28 |              |          1 | Jack Sparrow   |  43 | 999-999-9999 |                   1          2 | Jilly Cakes    |  30 | 910-111-1111 |                   2          3 | Johnny Bananas |  25 | 678-111-1234 |                   3          5 | Jackie Lackie  | 101 | 910-456-7890 |                   4(5 rows)
+```
+
+`COURSES`
+
+```
+generalassembly=# SELECT * FROM courses; course_id | course_code |      course_name-----------+-------------+-----------------------         1 | CNT         | Counting         2 | HTS         | How To Be a Superhero         3 | HTP         | How To Be a Pirate(3 rows)
+```
+
+`STUDENT_COURSE_ENROLLMENT`
+
+```
+generalassembly=# SELECT * FROM student_course_enrollment; enrollment_id | student_id | course_id---------------+------------+-----------             1 |          5 |         2             2 |          6 |         2(2 rows)
+```
+
+
+Find out which course `Jackie Lackie` is taking.
+
+```
+SELECT c.course_nameFROM student_course_enrollment sceINNER JOIN courses c ON sce.course_id = c.course_idINNER JOIN students s ON s.student_id = sce.student_idWHERE s.name = 'Jackie Lackie';
+```
+
+Output,
+
+```
+      course_name----------------------- How To Be a Superhero(1 row)
+```
+
+<!--Using the app above, create a query that will not only return the name of the person but will also provide the information about the employee's age, address, salary, and department (whether or not they have been assigned a department) for employees making more than $15,000.
 
 ```sql
 SELECT col1, col2, colN FROM table1 [INNER] JOIN table2 ON conditional_expression ...
@@ -175,6 +321,7 @@ The query result should look like this:
 
 ![](screenshots/results.png )
 
+-->
 -------
 
 ## Conclusion (5 min)
