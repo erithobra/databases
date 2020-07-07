@@ -33,7 +33,7 @@ creator:
 
 **Relational databases** are a way of storing and retrieving data on disk (or many disks). They provide more powerful storage and retrieval capabilities than simple files and are used in banking, eCommerce, healthcare, and all kinds of web and enterprise applications. 
 
-Knowing the basics of how they work and how to use them (with SQL) allows us to build “full-stack” applications that include business logic (Java back-end), a UI (HTML/CSS/JS front-end), plus permanent storage in a database.
+Knowing the basics of how they work and how to use them (with SQL) allows us to build “full-stack” applications that include business logic (Javascript back-end), a UI (HTML/CSS/JS front-end), plus permanent storage in a database.
 
 --------
 
@@ -104,9 +104,9 @@ All of these management systems use SQL (or some adaptation of it) as a language
 2.  Let's install Postgres:
 	1.  [Postgres installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 	2.  Follow the steps to install Postgres
-	3.  Make sure to install `pgAdmin` which is installed as part of Postgres installer for Windows
-	4. Remember the username and password you set while installing Postgres. This will come in handy later.
-	4.  After installation is complete run pgAdmin from Windows. The username/password will be what you initially set while installing Postgres.
+	3.  Make sure to [install `pgAdmin` for Mac](https://www.pgadmin.org/download/pgadmin-4-macos/)
+	4.  Remember the username and password you set while installing Postgres. This will come in handy later.
+	4.  After installation is complete run pgAdmin from your Mac. It'll open in a browser. The username/password will be what you initially set while installing Postgres.
 
 ------
 
@@ -123,18 +123,18 @@ You will be asked to put in the password to connect to Postgres. Once you do, yo
 
 **OR**
 
-We can use `cmd` prompt in Windows to connect to Postgres. But before we do that we need to add Postgres to our PATH environment variable. The way to do that is [here](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+We can use `psql` prompt from any directory in the Terminal to connect to Postgres. But before we do that we need to add Postgres to our PATH environment variable. The way to do that is [here](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 
-After PATH is updated. Open CMD prompt and type in,
+After PATH is updated. Open Terminal and type in,
 
-```
+```sql
 psql -U <username>
 ```
 >This will be the username you had set while installing Postgres.
 
 You will be asked to put in the password. You should see something like:
 
-```
+```sql
 postgres=# 
 ```
 
@@ -148,7 +148,7 @@ We will create a new database called `generalassembly` by right clicking on the 
 
 **OR**
 
-If you want to create a db using `cmd`, here is the query for it
+If you want to create a db from inside of `psql`, here is the query for it
 
 ```psql
 CREATE DATABASE generalassembly;
@@ -164,9 +164,9 @@ To remove a database through `pgAdmin` right-click on the database and drop it
 
 **OR**
 
-In `cmd` prompt run query, `DROP DATABASE <databasename>;`. 
+In the `psql` prompt run query, `DROP DATABASE <databasename>;`. 
 
-Now in `cmd` prompt let's _use_ that database we just created:
+Now in the `psql` prompt let's _use_ that database we just created:
 
 ```psql
 postgres=# \c generalassembly
@@ -181,7 +181,7 @@ $ psql generalassembly
 generalassembly=#
 ```
 
-To exit from postgres shell either type `exit` OR do `ctrl+d`.
+To exit from postgres shell either type `exit`, `ctrl+d`, or `\ + q`.
 
 ## SQL Style Guide 
 
@@ -220,7 +220,7 @@ Under SQL tab you can see the SQL query pgAdmin will run to create your table.
 
 **OR**
 
-Here's how you create a table in `cmd`:
+Here's how you create a table in using SQL:
 
 ```sql
 CREATE TABLE students (
@@ -231,7 +231,7 @@ CREATE TABLE students (
 );
 ```
 
-In PSQL, that will look like:
+In the `psql` prompt, if you copy and paste that in, it will look like:
 
 ```psql
 generalassembly=# CREATE TABLE students (
@@ -286,7 +286,7 @@ In `pgAdmin` you will righ-click on the table name `students` and click on `Quer
 *OR**
 
 
-In `cmd`, that will look like:
+In `psql`, that will look like:
 
 ```psql
 generalassembly=# INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999-999-9999');
