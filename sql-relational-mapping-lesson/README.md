@@ -132,6 +132,7 @@ Add records in the `address` table for each student in the `atudents` table. The
 
 <details>
 	<summary>Examples</summary>
+	
 	```sql
 	INSERT INTO address VALUES (DEFAULT, '200 Horton Ave', 'Lynbrook', 'NY');
 	INSERT INTO address VALUES (DEFAULT, '123 Webdev Dr', 'Boston', 'MA');
@@ -140,6 +141,7 @@ Add records in the `address` table for each student in the `atudents` table. The
 	update students set student_address_id = 3 where student_id = 3;
 	update students set student_address_id = 4 where student_id = 4;
 	```
+	
 </details>
 
 ------
