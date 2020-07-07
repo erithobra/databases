@@ -144,6 +144,16 @@ update students set student_address_id = 4 where student_id = 4;
 	
 </details>
 
+#### A sample one to one query:
+
+```sql
+select * from students, address where address_id = student_address_id;
+```
+
+![](https://www.dropbox.com/s/lue8xlltsl0u3ar/Screenshot%202020-07-07%2013.31.18.png?dl=0)
+
+<br>
+
 ------
 
 ## One-to-Many (30 min)
