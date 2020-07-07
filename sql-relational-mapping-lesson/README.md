@@ -168,7 +168,7 @@ You simply put the ID of the "one" resource in the "many," as shown above. This 
 
 In our example, we'll now create two new tables: `Courses` and `Instructors`. Let's first create the `Courses` table, which will have at least two attributes: `course_code` and `course_name`.
 
-```
+```sql
 CREATE TABLE courses (
 	course_id SERIAL PRIMARY KEY,
 	course_code VARCHAR(10),
@@ -178,12 +178,12 @@ CREATE TABLE courses (
 
 While we're at it, let's put in some data:
 
-```
+```sql
 INSERT INTO courses VALUES (DEFAULT, 'SEI', 'Software Engineering Immersive');
 INSERT INTO courses VALUES (DEFAULT, 'DSI', 'Data Science Immersive');
 ```
 
-```
+```sql
 generalassembly=# SELECT * FROM courses;
  course_id | course_code |          course_name           
 -----------+-------------+--------------------------------
@@ -197,7 +197,7 @@ We say that each course can be taught by multiple instructors, but only one inst
 
 Now, when we create the `Instructors` table, we'll also add **referential integrity** to it, just as we did before:
 
-```
+```sql
 CREATE TABLE instructors (
 	instructor_id SERIAL PRIMARY KEY, 
 	name VARCHAR(255) NOT NULL, 
@@ -211,7 +211,7 @@ We've created a new column, `instructor_course_id`, which is the foreign key ref
 
 But, what if an instructor is not teaching any courses or is on hiatus at the moment? What do we do then? One option is to delete the record, but this is definitely not the best one. The better option is to set the default value to `0`. Now, we'll know the total number of instructors we have and how many are currently teaching.
 
-```
+```psql
 generalassembly=# \d instructors
                                                 Table "public.instructors"
         Column        |          Type          | Collation | Nullable |                      Default                       
