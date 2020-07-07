@@ -131,16 +131,16 @@ Add records in the `address` table for each student in the `atudents` table. The
 - Slagathorn prefers not to share their address.
 
 <details>
-	<summary>Examples</summary>
+<summary>Examples</summary>
 	
-	```sql
-	INSERT INTO address VALUES (DEFAULT, '200 Horton Ave', 'Lynbrook', 'NY');
-	INSERT INTO address VALUES (DEFAULT, '123 Webdev Dr', 'Boston', 'MA');
-	INSERT INTO address VALUES (DEFAULT, '555 Five St', 'Fivetowns', 'NY');
-	update students set student_address_id = 1 where name = 'Jack Sparrow';
-	update students set student_address_id = 3 where student_id = 3;
-	update students set student_address_id = 4 where student_id = 4;
-	```
+```sql
+INSERT INTO address VALUES (DEFAULT, '200 Horton Ave', 'Lynbrook', 'NY');
+INSERT INTO address VALUES (DEFAULT, '123 Webdev Dr', 'Boston', 'MA');
+INSERT INTO address VALUES (DEFAULT, '555 Five St', 'Fivetowns', 'NY');
+update students set student_address_id = 1 where name = 'Jack Sparrow';
+update students set student_address_id = 3 where student_id = 3;
+update students set student_address_id = 4 where student_id = 4;
+```
 	
 </details>
 
