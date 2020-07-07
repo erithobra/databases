@@ -41,17 +41,17 @@ There are three ways in which one table can be linked to another. Each is used i
 
 The first way of linking tables is called a **one-to-one** relationship. It's not frequently used, but it's important to know about this option.
 
-In our previous lesson, we were working on a `Students` table that had few attributes. Now, let's say that each student should have an address attached.
+In our previous lesson, we were working on a `students` table that had few attributes. Now, let's say that each student should have an address attached.
 
-In real-world applications, `Address` is created as a separate table linked to `Student`. We say that each student can have only one address and each address is linked to a unique student. In such a case, we say that `Student` and  `Address` have a one-to-one relationship.
+In real-world applications, `address` is created as a separate table linked to `students`. We say that each student can have only one address and each address is linked to a unique student. In such a case, we say that `Student` and  `Address` have a one-to-one relationship.
 
 ### Code-Along
 
 Next, we'll see how this relationship is implemented in SQL.
 
-First, let's create the `Address` table with a few necessary attributes:
+First, let's create the `address` table with a few necessary attributes:
 
-```
+```sql
 CREATE TABLE address (
 	address_id SERIAL PRIMARY Key,
 	street VARCHAR(150),
@@ -61,18 +61,18 @@ CREATE TABLE address (
 ```
 >If you are using pgAdmin, create a new table using the GUI as shown in the previous lesson.
 
-Now, to create a relationship between these two tables, we'll have to add a new column in the `Students` table that will eventually store the reference to the `Address` record for that student. 
+Now, to create a relationship between these two tables, we'll have to add a new column in the `students` table that will eventually store the reference to the `Address` record for that student. 
 
 We'll use `ALTER` to add a new column; the `ALTER` keyword is used to change the description of the existing table. Our query will look like this:
 
-```
+```sql
 ALTER TABLE students ADD COLUMN student_address_id INT;
 ```
 >Again, if using pgAdmin, right-click on the Columns to create a new integer column named `student_address_id`.
 
-Let's go over the query. We're adding a new column of the integer data type, named `student_address_id`, to our `Students` table.
+Let's go over the query. We're adding a new column of the integer data type, named `student_address_id`, to our `students` table.
 
-Once the column is added, we can add a foreign key constraint to this column so that `student_address_id` in `Students` table will have the reference to the data in the `Address` table.
+Once the column is added, we can add a foreign key constraint to this column so that `student_address_id` in `students` table will have the reference to the data in the `address` table.
 
 A **foreign key** is a key used to link two tables together. It's a field (or collection of fields) in one table that refers to the primary key in another table.
 
@@ -87,22 +87,22 @@ In `pgAdmin`, we will right-click on the Constraints option under `students` tab
 
 **OR**
 
-In `cmd` prompt, we'll again `ALTER` the `Students` table to create this constraint:
+In the `psql` prompt, we'll again `ALTER` the `students` table to create this constraint:
 
-```
+```sql
 ALTER TABLE students 
-ADD CONSTRAINT fk_students_address 
+ADD CONSTRAINT fk_student_address 
 FOREIGN KEY (student_address_id) 
 REFERENCES address (address_id);
 ```
 
-Let's go over this query. With `ALTER TABLE students`, we're again altering the `Students` table to a foreign key on one of its columns. Meanwhile, `fk_students_address` is just the name of the constraint, so we can give any name here. Think of it in terms of a variable in any programming language: It's just a placeholder.
+Let's go over this query. With `ALTER TABLE students`, we're again altering the `students` table to a foreign key on one of its columns. Meanwhile, `fk_student_address` is just the name of the constraint, so we can give any name here. Think of it in terms of a variable in any programming language: It's just a placeholder.
 
-With `FOREIGN KEY (student_address_id) REFERENCES address (address_id)`, we're declaring the column in the `Students` table, which will be the foreign key (and what it will reference). As mentioned before, this is the primary key for `address_id` of `Address` table.
+With `FOREIGN KEY (student_address_id) REFERENCES address (address_id)`, we're declaring the column in the `students` table, which will be the foreign key (and what it will reference). As mentioned before, this is the primary key for `address_id` of `address` table.
 
 Let's run `\d students` to have one final look at the table.
 
-```
+```sql
 generalassembly=# \d students;
                                              Table "public.students"
        Column       |         Type          | Collation | Nullable |                   Default                    
@@ -114,13 +114,14 @@ generalassembly=# \d students;
  student_address_id | integer               |           |          | 
 Indexes:
     "students_pkey" PRIMARY KEY, btree (student_id)
+    "fki_fk_student_address" btree (student_address_id)
 Foreign-key constraints:
     "fk_students_address" FOREIGN KEY (student_address_id) REFERENCES address(address_id)
 ```
 
 ### You Do
 
-Add records in the `Address` table for each student in the `Students` table. Then, update the `Students` table to associate the address.
+Add records in the `address` table for each student in the `atudents` table. Then, update the `students` table to associate the address.
 
 - Jack now wants to make an honest living and has moved to 200 Horton Ave., Lynbrook, NY.
 - Captain Barbossa is somewhere out at the sea, refusing to settle down.
@@ -128,6 +129,18 @@ Add records in the `Address` table for each student in the `Students` table. The
 - John lives at 555 Five St, Fivetowns, NY.
 - Jackie lives at 2 OldForThis Ct, Fivetowns, NY.
 - Slagathorn prefers not to share their address.
+
+<details>
+	<summary>Examples</summary>
+	```sql
+	INSERT INTO address VALUES (DEFAULT, '200 Horton Ave', 'Lynbrook', 'NY');
+	INSERT INTO address VALUES (DEFAULT, '123 Webdev Dr', 'Boston', 'MA');
+	INSERT INTO address VALUES (DEFAULT, '555 Five St', 'Fivetowns', 'NY');
+	update students set student_address_id = 1 where name = 'Jack Sparrow';
+	update students set student_address_id = 3 where student_id = 3;
+	update students set student_address_id = 4 where student_id = 4;
+	```
+</details>
 
 ------
 
