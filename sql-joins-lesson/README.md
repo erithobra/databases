@@ -229,7 +229,7 @@ The returned data includes information about `EMP_ID`, `NAME`, and `DEPT`.-->
 
 ## Independent Practice: Inner JOINs
 
-Now you ll use inner joins to query `courses` and `instructors` tables. The data in both the tables is,
+Now you ll use inner joins to query `courses` and `instructors` tables. The data in both the tables is:
 
 `COURSES`
 
@@ -243,7 +243,7 @@ generalassembly=# SELECT * FROM courses;
 (3 rows)
 ```
 
-`INSTRUCTOTS`
+`INSTRUCTORS`
 
 ```
 generalassembly=# SELECT * FROM instructors;
