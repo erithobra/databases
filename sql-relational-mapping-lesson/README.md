@@ -166,7 +166,7 @@ You simply put the ID of the "one" resource in the "many," as shown above. This 
 
 ### Code-Along
 
-In our example, we'll now create two new tables: `Courses` and `Instructors`. Let's first create the `Courses` table, which will have at least two attributes: `course_code` and `course_name`.
+In our example, we'll now create two new tables: `courses` and `instructors`. Let's first create the `courses` table, which will have at least two attributes: `course_code` and `course_name`.
 
 ```sql
 CREATE TABLE courses (
