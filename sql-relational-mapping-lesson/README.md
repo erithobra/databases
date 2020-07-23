@@ -70,7 +70,7 @@ ALTER TABLE students ADD COLUMN student_address_id INT;
 ```
 >Again, if using pgAdmin, right-click on the Columns to create a new integer column named `student_address_id`.
 
-Let's go over the query. We're adding a new column of the integer data type, named `student_address_id`, to our `students` table.
+Let's go over the query. We're adding a new column of the integer data type, named `student_address_id` , to our `students` table.
 
 Once the column is added, we can add a foreign key constraint to this column so that `student_address_id` in `students` table will have the reference to the data in the `address` table.
 
@@ -121,7 +121,7 @@ Foreign-key constraints:
 
 ### You Do
 
-Add records in the `address` table for each student in the `atudents` table. Then, update the `students` table to associate the address.
+Add records in the `address` table for each student in the `students` table. Then, update the `students` table to associate the address.
 
 - Jack now wants to make an honest living and has moved to 200 Horton Ave., Lynbrook, NY.
 - Captain Barbossa is somewhere out at the sea, refusing to settle down.
@@ -195,7 +195,7 @@ generalassembly=# SELECT * FROM courses;
 
 We say that each course can be taught by multiple instructors, but only one instructor can teach a course at a time. Therefore, there is a one-to-many relationship between course and instructors.
 
-Now, when we create the `Instructors` table, we'll also add **referential integrity** to it, just as we did before:
+Now, when we create the `instructors` table, we'll also add **referential integrity** to it, just as we did before:
 
 ```sql
 CREATE TABLE instructors (
@@ -231,7 +231,7 @@ Foreign-key constraints:
 
 You have the tables ready and the relationships created, so now you can have some fun with the data!
 
-Add some new instructors to the `Instructors` table; try to match them up with the courses they feel comfortable teaching.
+Add some new instructors to the `instructors` table; try to match them up with the courses they feel comfortable teaching.
 
 Oh! I almost forgot, Captain Barbossa no longer wants to be a student. He is insisting (not so nicely) to be an instructor of a new course: *How to Be a Pirate*. I would suggest we give in to his demands.
 
@@ -243,7 +243,7 @@ Oh! I almost forgot, Captain Barbossa no longer wants to be a student. He is ins
 
 Let's think about a high school situation where students have many courses and courses have many students. 
 
-How do we do this? We _could_ attempt to use the previous approach (wrong) and put ALL of the student IDs associated with each course in each row of the `Courses` table AND ALL of the course IDs associated with each student in each row on the `Students` table. 
+How do we do this? We _could_ attempt to use the previous approach (wrong) and put ALL of the student IDs associated with each course in each row of the `courses` table AND ALL of the course IDs associated with each student in each row on the `students` table. 
 
 However, we'd just be putting arbitrary amounts of columns in our tables, and the end result is not pretty:
 
@@ -265,7 +265,7 @@ For example, the JOIN table above represents a real thing: **enrollment**! Enrol
 
 ### Code-Along
 
-We already have `Students` and `Courses` tables in our database. We just have to create a JOIN table signifying the enrollment, just as we discussed in the example above. For now, we'll keep things simple and just have a column for `student_id` and a column for `course_id`. 
+We already have `students` and `courses` tables in our database. We just have to create a JOIN table signifying the enrollment, just as we discussed in the example above. For now, we'll keep things simple and just have a column for `student_id` and a column for `course_id`. 
 
 Let's create our JOIN table. We'll call it `student_course_enrollment`:
 
