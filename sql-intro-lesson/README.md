@@ -29,47 +29,6 @@ creator:
 | 15 min | Independent Practice | SQL Challenges |
 | 5 min  | Conclusion      | Review / Recap |
 
-## Overview (5 min)
-
-**Relational databases** are a way of storing and retrieving data on disk (or many disks). They provide more powerful storage and retrieval capabilities than simple files and are used in banking, eCommerce, healthcare, and all kinds of web and enterprise applications. 
-
-Knowing the basics of how they work and how to use them (with SQL) allows us to build “full-stack” applications that include business logic (Javascript back-end), a UI (HTML/CSS/JS front-end), plus permanent storage in a database.
-
---------
-
-## Intro: What Are Databases? (15 min)
-
-A **database** is a place where information is stored in a hard drive (or distributed across multiple hard drives) somewhere on a computer. Much as we've been creating and storing data here and there, a database represents a collection of individual pieces of data stored in a highly structured and searchable way; they represent a model of reality, which is why we call them models in MVC.
-
-Inside a database, we carry out basic actions such as **c**reating, **r**eading, **u**pdating, and **d**eleting data (or CRUD)!
-
-In modern web development, there are different categories of databases: relational (aka, SQL), NoSQL, key-value, and more. We're focusing on relational databases here.
-
-SQL stands for **Structured Query Language**, and it's a language used to manage and get information from what are considered "relational" databases (we'll talk more about SQL in the next lesson).
-
-We call these databases "relational" because different models (or pieces of data) can be linked to other models — i.e., "related." 
-
-Relational databases store data in a **table**; think of it like a spreadsheet. The table holds all of the data for one model, while the columns define the model's attributes; we often call columns "attributes" or "fields." A row is an instance (remember instantiation!); think of it as a unique copy of the blueprint that is our model (often called a "record").
-
-![relational db](https://cloud.githubusercontent.com/assets/25366/8589355/2646c588-25ca-11e5-9f2d-3d3afe8b7817.png)
-
------
-
-## We Do: Let's Draw some tables
-
-In this exercise, we'll explain the basic idea around taking a real-world data problem and organizing a solution in tables and relationships between tables.
-
-Let's say we're building an app for a library. Consider what some tables would look like (e.g., what information or attributes would be associated with each table).
-
-> **Instructor Note**: Maybe call on random students to come up to the board to draw different tables with rows and columns. If we secretly guide them toward building individual models that should be related, we can naturally draw connections between those models to show relationships.
-
-- What would the table for a book look like?
-- What would the table for an author look like?
-- What would the table for a category look like?
-
-This is when we start seeing relationships form. This is great! You can imagine duplicate pieces of data being stored naturally, especially when an author has multiple books (for instance). That's a waste of space! We'll later talk about how we can connect these tables so we don't have tons of duplicate data all over the place.
-
-------
 
 ## Intro: We Know About Databases, But What Is SQL? (10 min)
 
@@ -101,12 +60,15 @@ All of these management systems use SQL (or some adaptation of it) as a language
 
 ## Installing Postgres (15 min)
 
-2.  Let's install Postgres:
-	1.  [Postgres installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
-	2.  Follow the steps to install Postgres
-	3.  Make sure to [install `pgAdmin` for Mac](https://www.pgadmin.org/download/pgadmin-4-macos/)
-	4.  Remember the username and password you set while installing Postgres. This will come in handy later.
-	4.  After installation is complete run pgAdmin from your Mac. It'll open in a browser. The username/password will be what you initially set while installing Postgres.
+1. Run the command `brew install postgres`
+2. Run `brew tap homebrew/services` to install brew services.
+3. Then run `brew services start postgresql` to start postgres as a background service
+4. To stop postgres manually, run `brew services stop postgresql`. You can also use brew services to restart Postgres `brew services restart postgresql`
+
+
+OR
+
+You can download the installer for mac from [here](https://www.postgresql.org/download/macosx/). Make sure to start the Postgres server.
 
 ------
 
@@ -115,24 +77,15 @@ All of these management systems use SQL (or some adaptation of it) as a language
 
 ### Connecting to Postgres
 
-There are 2 ways to connect to the Postgres database. Throughout the lesson I will show you both.
+We can use `psql` prompt from any directory in the Terminal to connect to Postgres. 
 
-We can either use [pgAdmin](https://www.pgadmin.org/) to access our database. `pgAdmin` gives users a GUI for Postgres. Anything you can do by running any query on Postgres, you can do it using this tool. 
-
-You will be asked to put in the password to connect to Postgres. Once you do, you will see a database `postgres` is already created.
-
-**OR**
-
-We can use `psql` prompt from any directory in the Terminal to connect to Postgres. But before we do that we need to add Postgres to our PATH environment variable. The way to do that is [here](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
-
-After PATH is updated. Open Terminal and type in,
+Open Terminal and type in,
 
 ```sql
-psql -U <username>
+psql postgres
 ```
->This will be the username you had set while installing Postgres.
 
-You will be asked to put in the password. You should see something like:
+After that you should see something like:
 
 ```sql
 postgres=# 
@@ -144,10 +97,6 @@ Great! Now, you can execute PSQL commands
 
 Let's create a database! 
 
-We will create a new database called `generalassembly` by right clicking on the `Databases` option.
-
-**OR**
-
 If you want to create a db from inside of `psql`, here is the query for it
 
 ```psql
@@ -157,12 +106,6 @@ CREATE DATABASE generalassembly;
 The semicolon is important! Be sure to always end your SQL queries and commands with semicolons.
 
 ### Dropping a DB
-
-When you drop a database, it is gone forever from the memory so make sure to use it with caution.
-
-To remove a database through `pgAdmin` right-click on the database and drop it 
-
-**OR**
 
 In the `psql` prompt run query, `DROP DATABASE <databasename>;`. 
 
@@ -204,21 +147,6 @@ Let's create a table for students that collects information about:
 - The student's name (cannot be left blank).
 - Their age (cannot be left blank).
 - Their mobile.
-
-In `pgAdmin` right click on `Tables` to create a new table `students`. 
-
-![](./images/create_table.png)
-
-Click on the Columns tab to add the columns one by one
-
-![](./images/add_columns.png)
-
-Under SQL tab you can see the SQL query pgAdmin will run to create your table.
-
-![](./images/create_table_query.png)
-> Note how similar it is to the create query given below
-
-**OR**
 
 Here's how you create a table in using SQL:
 
@@ -278,13 +206,6 @@ Let's do it for Jack:
 ```sql
 INSERT INTO students VALUES (DEFAULT, 'Jack Sparrow', 28, '999-999-9999');
 ```
-
-In `pgAdmin` you will righ-click on the table name `students` and click on `Query Tool...`. This will open a tab on the window where you can run the above query.
-
-![](./images/insert_query.png)
-
-*OR**
-
 
 In `psql`, that will look like:
 
@@ -348,12 +269,6 @@ We can pass in the columns we want to look at (such as above), or even get all o
 SELECT * FROM table_name;
 ```
 
-In `pgAdmin` run the select query in the query tool,
-
-![](./images/select_query.png)
-
-**OR**
-
 For example, we can get all of the records back:
 
 ```psql
@@ -383,9 +298,6 @@ generalassembly=# SELECT name, age FROM students;
  Slaggy McRaggy   |  28
 (6 rows)
 ```
-
-From this point on you will continue to use query tool in `pgAdmin` to get better practice on SQL query syntax.
-
 
 ### Getting More Specific: WHERE Clause
 
