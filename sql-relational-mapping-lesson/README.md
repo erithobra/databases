@@ -59,7 +59,6 @@ CREATE TABLE address (
 	state VARCHAR(10)
 );
 ```
->If you are using pgAdmin, create a new table using the GUI as shown in the previous lesson.
 
 Now, to create a relationship between these two tables, we'll have to add a new column in the `students` table that will eventually store the reference to the `Address` record for that student. 
 
@@ -68,24 +67,12 @@ We'll use `ALTER` to add a new column; the `ALTER` keyword is used to change the
 ```sql
 ALTER TABLE students ADD COLUMN student_address_id INT;
 ```
->Again, if using pgAdmin, right-click on the Columns to create a new integer column named `student_address_id`.
 
 Let's go over the query. We're adding a new column of the integer data type, named `student_address_id` , to our `students` table.
 
 Once the column is added, we can add a foreign key constraint to this column so that `student_address_id` in `students` table will have the reference to the data in the `address` table.
 
 A **foreign key** is a key used to link two tables together. It's a field (or collection of fields) in one table that refers to the primary key in another table.
-
-In `pgAdmin`, we will right-click on the Constraints option under `students` table to create a new Foreign Key constraint.
-
-![](./images/create_fk.png)
-
-![](./images/create_fk_1.png)
-
-![](./images/create_fk_2.png)
-> Don't worry if this query looks little different from the one given below. pgAdmin gives us some extra options.
-
-**OR**
 
 In the `psql` prompt, we'll again `ALTER` the `students` table to create this constraint:
 
@@ -150,8 +137,6 @@ update students set student_address_id = 4 where student_id = 4;
 select * from students, address where address_id = student_address_id;
 ```
 
-![](https://i.imgur.com/5JHdGIT.png)
-
 <br>
 
 ------
@@ -205,7 +190,6 @@ CREATE TABLE instructors (
 	instructor_course_id INT REFERENCES courses(course_id) NOT NULL DEFAULT (0)
 );
 ```
->In pgAdmin you can create it as part of creating the `instructors` table.
 
 We've created a new column, `instructor_course_id`, which is the foreign key referencing `course_id`, the primary key in the `Courses` table. An instructor should always be teaching a course; that's why we have put a `NOT NULL` constraint. 
 
@@ -304,21 +288,6 @@ Foreign-key constraints:
     "student_course_enrollment_student_id_fkey" FOREIGN KEY (student_id) REFERENCES students(student_id)
 ```
 
-**OR** 
-
-In `pgAdmin` adding join table will look like,
-
-![](./images/join_table.png)
-
-![](./images/jt_col.png)
-
-![](./images/jt_constraints.png)
-
-![](./images/jt_constraints_2.png)
-
-![](./images/jt_unique.png)
-
-![](./images/jt_sql.png)
 
 ### You Do
 
