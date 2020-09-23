@@ -1,7 +1,5 @@
 ---
 Title: Intro to Relational Databases
-Type: Morning Exercise
-Duration: "1:00"
 Author:
     Name: Alex De Marco
     City: NYC
