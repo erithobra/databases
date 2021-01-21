@@ -42,7 +42,7 @@ SQL stands for **Structured Query Language**, and it's a language that's univers
 - Querying or retrieving data.
 - Updating or deleting data.
 - Creating new tables and entire databases.
-- Controlling permissions of who can access to our data.
+- Controlling permissions of who can access our data.
 
 Note that all of these actions depend on what the database administrator sets for user permissions. If you're an analyst, for example, you'll only have access to retrieving company data. But, as a developer, you could access all of these commands and be in charge of setting the database permissions for your web or mobile application.
 
