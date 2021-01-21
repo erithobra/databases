@@ -355,7 +355,7 @@ Done!
 How about those students who live in area code `910`?
 
 ```psql
-generalassembly=# SELECT * FROM students WHERE mobile LIKE '%Fivetowns%';
+generalassembly=# SELECT * FROM students WHERE mobile LIKE '%910%';
  student_id |     name      | age |    mobile    
 ------------+---------------+-----+--------------
           3 | Jilly Cakes   |  30 | 910-111-1111
