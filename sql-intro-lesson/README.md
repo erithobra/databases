@@ -440,10 +440,10 @@ There's _no way_ you're going to remember the exact syntax of everything we just
 Here is a list of some common PostgreSQL commands you may need:
 
 - `\c` - Connect to database
-- `\l`
-- `\d`
-- `\d+`
-- `\q`
+- `\l` - List your databases
+- `\d` - List the relations in your database
+- `\d+`- List the relations in your database including the size and description
+- `\q` - Quit psql shell
 - `\h` - Help
 
 To wrap up, answer these questions:
