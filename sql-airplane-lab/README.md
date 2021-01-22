@@ -58,9 +58,9 @@ and run the following code:
 
 You can check if the tables above are created by running the `\dt` command in your Psql shell. 
 
-Clone this repo and copy [`airlines.csv`](airlines.csv), [`airports.csv`](airports.csv), and [`routes.csv`](routes.csv) to your `Desktop` directory on your computer.
+Fork and clone this repo and copy [`airlines.csv`](airlines.csv), [`airports.csv`](airports.csv), and [`routes.csv`](routes.csv) to your `Desktop` directory on your computer.
 
-Run the following code, substituting your computer's username for mine. If you're unsure of the full path, `cd` to your `Desktop` and `pwd`:
+Run the following code, substituting your computer's username for `<your-username>`. If you're unsure of the full path, `cd` to your `Desktop` and `pwd`:
 
   ```sql
   \copy routes FROM '/Users/<your-username>/Desktop/routes.csv' DELIMITER ',' CSV;
@@ -79,6 +79,9 @@ You should have now seeded three tables with flight data. Run `SELECT * FROM <ta
 3. Find out the NUMBER of airports in Canada.
 4. Select airport names IN Algeria, Ghana, and Ethiopia. Order the results by country.  
 5. Select all of the airports from which `'Germania'` Airlines flies.
+
+## Deliverable
+Create a `responses.txt` file to submit with your pull request. Provide the appropriate responses (query, answer, etc.) for each **goal**.
 
 ## Bonus
 
