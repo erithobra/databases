@@ -1,0 +1,175 @@
+1. Select airport code for airports LIKE 'John F Kennedy' or 'De Gaulle'.
+    
+            SELECT iata_faa FROM airports WHERE name LIKE '%John F Kennedy%' OR name LIKE '%De Gaulle%';
+            
+            iata_faa
+            ----------
+            CDG
+            JFK
+            (2 rows)
+
+2. Select all of the flights originating from 'JFK' AND going to 'CDG'.
+
+            SELECT * FROM routes WHERE origin_code = 'JFK' AND dest_code = 'CDG';
+
+            airline_code | airline_id | origin_code | origin_id | dest_code | dest_id | codeshare | stops |    equipment
+            --------------+------------+-------------+-----------+-----------+---------+-----------+-------+-----------------
+            AA           |         24 | JFK         |      3797 | CDG       |    1382 |           |     0 | 763 757
+            AF           |        137 | JFK         |      3797 | CDG       |    1382 |           |     0 | 332 772 388 343
+            AY           |       2350 | JFK         |      3797 | CDG       |    1382 |           |     0 | 763 757
+            AZ           |        596 | JFK         |      3797 | CDG       |    1382 | Y         |     0 | 332 388 772 343
+            BA           |       1355 | JFK         |      3797 | CDG       |    1382 | Y         |     0 | 763 757
+            DL           |       2009 | JFK         |      3797 | CDG       |    1382 |           |     0 | 332 772 388 343
+            EY           |       2222 | JFK         |      3797 | CDG       |    1382 | Y         |     0 | 763 757
+            IB           |       2822 | JFK         |      3797 | CDG       |    1382 | Y         |     0 | 763 757
+            QR           |       4091 | JFK         |      3797 | CDG       |    1382 | Y         |     0 | 757
+            SE           |       5479 | JFK         |      3797 | CDG       |    1382 |           |     0 | 763 332
+            US           |       5265 | JFK         |      3797 | CDG       |    1382 |           |     0 | 763 757
+
+3. Find out the NUMBER of airports in Canada.
+
+            SELECT COUNT(id) FROM airports WHERE country = 'Canada';
+
+            count
+            -------
+            435
+            (1 row)
+
+4. Select airport names IN Algeria, Ghana, and Ethiopia. Order the results by country.
+
+            SELECT name, country  FROM airports WHERE country = 'Algeria' OR country = 'Ghana' OR country = 'Ethiopia' ORDER BY country ASC;
+
+                            name                  | country
+            ----------------------------------------+----------
+            Houari Boumediene                      | Algeria
+            Tiska                                  | Algeria
+            Boufarik                               | Algeria
+            Reggane                                | Algeria
+            Illizi Takhamalt                       | Algeria
+            Ain Oussera                            | Algeria
+            Tamanrasset                            | Algeria
+            Jijel                                  | Algeria
+            Mecheria                               | Algeria
+            Relizane                               | Algeria
+            Batna Airport                          | Algeria
+            Béchar Boudghene Ben Ali Lotfi Airport | Algeria
+            Bordj Badji Mokhtar Airport            | Algeria
+            Annaba                                 | Algeria
+            Mohamed Boudiaf Intl                   | Algeria
+            Cheikh Larbi Tebessi                   | Algeria
+            Hassi R Mel                            | Algeria
+            Bou Chekif                             | Algeria
+            Bou Sfer                               | Algeria
+            Tindouf                                | Algeria
+            Ech Cheliff                            | Algeria
+            Tafaraoui                              | Algeria
+            Zenata                                 | Algeria
+            Es Senia                               | Algeria
+            Sidi Bel Abbes                         | Algeria
+            Ghriss                                 | Algeria
+            Touat Cheikh Sidi Mohamed Belkebir     | Algeria
+            Biskra                                 | Algeria
+            El Golea                               | Algeria
+            Noumerat                               | Algeria
+            Oued Irara                             | Algeria
+            In Salah                               | Algeria
+            Sidi Mahdi                             | Algeria
+            Laghouat                               | Algeria
+            Timimoun                               | Algeria
+            Ouargla                                | Algeria
+            In Amenas                              | Algeria
+            Blida                                  | Algeria
+            El Merk                                | Algeria
+            Tsletsi Airport                        | Algeria
+            Ain Arnat Airport                      | Algeria
+            Guemar Airport                         | Algeria
+            Bou Saada                              | Algeria
+            Soummam                                | Algeria
+            Dolo Ado                               | Ethiopia
+            Bole Intl                              | Ethiopia
+            Lideta                                 | Ethiopia
+            Arba Minch                             | Ethiopia
+            Axum                                   | Ethiopia
+            Bahir Dar                              | Ethiopia
+            Dire Dawa Intl                         | Ethiopia
+            Gambella                               | Ethiopia
+            Gondar                                 | Ethiopia
+            Jimma                                  | Ethiopia
+            Lalibella                              | Ethiopia
+            Makale                                 | Ethiopia
+            Asosa                                  | Ethiopia
+            Mekane Salam Airport                   | Ethiopia
+            Debre Marqos                           | Ethiopia
+            Debre Tabor Airport                    | Ethiopia
+            Harar Meda Airport                     | Ethiopia
+            Robe Airport                           | Ethiopia
+            Humera Airport                         | Ethiopia
+            Shilavo Airport                        | Ethiopia
+            Shire Inda Selassie Airport            | Ethiopia
+            Baco Airport                           | Ethiopia
+            Beica Airport                          | Ethiopia
+            Combolcha Airport                      | Ethiopia
+            Dembidollo Airport                     | Ethiopia
+            Gode Airport                           | Ethiopia
+            Gore Airport                           | Ethiopia
+            Kabri Dehar Airport                    | Ethiopia
+            Mizan Teferi Airport                   | Ethiopia
+            Tippi Airport                          | Ethiopia
+            Awasa Airport                          | Ethiopia
+            Jijiga Airport                         | Ethiopia
+            Takoradi                               | Ghana
+            Kumasi Airport                         | Ghana
+            Wa                                     | Ghana
+            Tamale                                 | Ghana
+            Kotoka Intl                            | Ghana
+            Sunyani                                | Ghana
+
+
+5. Select all of the airports from which 'Germania' Airlines flies.
+
+            SELECT DISTINCT name, origin_code FROM airports, routes WHERE airline_id = 2547 AND origin_id = id;
+            
+                                    name                           | origin_code
+            ---------------------------------------------------------+-------------
+            Antalya                                                 | AYT
+            Arlanda                                                 | ARN
+            Augsburg                                                | AGB
+            Baden Airpark                                           | FKB
+            Blagnac                                                 | TLS
+            Bristol                                                 | BRS
+            Domododevo                                              | DME
+            Dortmund                                                | DTM
+            Dresden                                                 | DRS
+            Dusseldorf                                              | DUS
+            Enfidha - Zine El Abidine Ben Ali International Airport | NBE
+            Erbil Intl                                              | EBL
+            Erfurt                                                  | ERF
+            Frankfurt Main                                          | FRA
+            Franz Josef Strauss                                     | MUC
+            Friedrichshafen                                         | FDH
+            Fuerteventura                                           | FUE
+            Gatwick                                                 | LGW
+            Gran Canaria                                            | LPA
+            Hamburg Finkenwerder                                    | XFW
+            Hawarden                                                | CEG
+            Ibiza                                                   | IBZ
+            Kassel Calden                                           | KSF
+            Laage                                                   | RLG
+            Lanzarote                                               | ACE
+            Leipzig Halle                                           | LEJ
+            Madeira                                                 | FNC
+            Neuenland                                               | BRE
+            Nikos Kazantzakis                                       | HER
+            Pristina                                                | PRN
+            Provence                                                | MRS
+            Rafic Hariri Intl                                       | BEY
+            Rhodes Diagoras                                         | RHO
+            Schonefeld                                              | SXF
+            Schwechat                                               | VIE
+            Skopje                                                  | SKP
+            Son Sant Joan                                           | PMI
+            Sulaymaniyah International Airport                      | ISU
+            Tegel                                                   | TXL
+            Tenerife Sur                                            | TFS
+            Zonguldak                                               | ONQ
+            (41 rows)
